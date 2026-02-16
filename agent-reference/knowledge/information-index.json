@@ -1,0 +1,1730 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-02-15",
+  "description": "Knowledge taxonomy and organization schema for fast retrieval",
+  "categories": [
+    {
+      "workspace-setup": {
+        "description": "Initial project setup, tooling, and configuration",
+        "subcategories": [
+          "typescript-configuration",
+          "build-tooling",
+          "environment-configuration",
+          "npm-script-quality-gates"
+        ],
+        "keywords": [
+          "setup",
+          "configuration",
+          "tooling",
+          "baseline",
+          "typescript",
+          "eslint",
+          "prettier",
+          "environment",
+          "npm scripts",
+          "quality gates",
+          "check chain",
+          "lint",
+          "test",
+          "asset budget",
+          "manifest contract",
+          "hero check",
+          "CI/CD",
+          "validation chain",
+          "fail fast",
+          "script composition"
+        ]
+      },
+      "linting-configuration": {
+        "description": "ESLint and code quality configuration patterns",
+        "subcategories": [
+          "eslint-flat-config",
+          "node-globals",
+          "script-specific-rules"
+        ],
+        "keywords": [
+          "eslint",
+          "flat-config",
+          "linting",
+          "node",
+          "globals",
+          "no-undef",
+          "mjs",
+          "console",
+          "process"
+        ]
+      },
+      "code-patterns": {
+        "description": "TypeScript and Angular code patterns for type safety and immutability",
+        "subcategories": [
+          "type-safe-models",
+          "immutable-constants",
+          "literal-unions",
+          "signal-based-state-management",
+          "business-rule-enforcement",
+          "typescript-strict-type-narrowing",
+          "angular-event-emission",
+          "dom-scroll-behavior",
+          "idempotent-guards",
+          "threejs-disposal",
+          "parsed-scene-payload",
+          "threejs-type-imports",
+          "signature-narrowing",
+          "threejs-traverse-typing",
+          "validation-exit-code-pattern",
+          "angular-template-binding",
+          "component-state-delegation",
+          "metrics-binding",
+          "angular-runtime-di",
+          "angular-component-metadata",
+          "service-retry-api"
+        ],
+        "keywords": [
+          "typescript",
+          "type-safe",
+          "models",
+          "readonly",
+          "const",
+          "as const",
+          "literal unions",
+          "type narrowing",
+          "immutable",
+          "configuration",
+          "signals",
+          "state management",
+          "computed",
+          "reactive",
+          "business rules",
+          "early return",
+          "guard clause",
+          "type guard",
+          "tuple",
+          "includes",
+          "type widening",
+          "casting",
+          "output",
+          "event emitter",
+          "events",
+          "component interaction",
+          "scroll",
+          "scrollIntoView",
+          "DOM",
+          "navigation",
+          "idempotent",
+          "redundant operations",
+          "performance",
+          "apply methods",
+          "mode transitions",
+          "threejs",
+          "renderer",
+          "disposal",
+          "cleanup",
+          "animation loop",
+          "setAnimationLoop",
+          "memory leak",
+          "resource management",
+          "lifecycle",
+          "scene payload",
+          "parsed data",
+          "type imports",
+          "Object3D",
+          "Material",
+          "runtime imports",
+          "bundle size",
+          "import optimization",
+          "signature narrowing",
+          "undefined handling",
+          "guard at call sites",
+          "material disposal",
+          "TS2339",
+          "type safety",
+          "scene traverse",
+          "type annotation",
+          "explicit typing",
+          "exit code",
+          "process.exitCode",
+          "non-zero exit",
+          "graceful shutdown",
+          "CI/CD",
+          "validation",
+          "error handling",
+          "fail fast",
+          "npm script chains",
+          "quality gates",
+          "inline types",
+          "LoadEvent",
+          "co-location",
+          "domain types",
+          "service types",
+          "type definition location",
+          "load state",
+          "status",
+          "loading orchestration",
+          "setLoadState",
+          "radio buttons",
+          "attribute binding",
+          "disabled state",
+          "computed properties",
+          "UI controls",
+          "ground truth",
+          "representation mode",
+          "state delegation",
+          "service delegation",
+          "component state",
+          "metrics",
+          "METRIC_CONSTANTS",
+          "dashboard metrics",
+          "scoped metrics",
+          "metrics separation",
+          "runtime DI",
+          "inject function",
+          "dependency injection",
+          "no constructor injection",
+          "component DI",
+          "DI pattern",
+          "styleUrls",
+          "array syntax",
+          "component metadata",
+          "component decorator",
+          "retry API",
+          "retryLast",
+          "service retry",
+          "error recovery API"
+        ]
+      },
+      "project-structure": {
+        "description": "Angular project organization and module structure",
+        "subcategories": [
+          "core-organization",
+          "models",
+          "config",
+          "services",
+          "service-organization",
+          "feature-module-organization",
+          "focus-trap-implementation"
+        ],
+        "keywords": [
+          "angular",
+          "structure",
+          "core",
+          "models",
+          "config",
+          "organization",
+          "modules",
+          "services",
+          "testing",
+          "co-location",
+          "spec files",
+          "features",
+          "components",
+          "feature modules",
+          "demo",
+          "folder structure",
+          "organizational pattern",
+          "greenfield",
+          "component location",
+          "focus trap",
+          "accessibility patterns",
+          "keyboard navigation",
+          "a11y implementation",
+          "custom focus trap"
+        ]
+      },
+      "testing": {
+        "description": "Testing patterns, configuration, and environment setup",
+        "subcategories": [
+          "vitest-environment-configuration",
+          "unit-testing",
+          "test-organization",
+          "e2e-organization",
+          "environment-fixture-override",
+          "integration-testing",
+          "component-test-pattern"
+        ],
+        "keywords": [
+          "testing",
+          "vitest",
+          "test environment",
+          "jsdom",
+          "node environment",
+          "angular testing",
+          "unit tests",
+          "spec files",
+          "e2e",
+          "end-to-end",
+          "playwright",
+          "integration",
+          "user flow",
+          "environment variable",
+          "SCENE_MANIFEST_PATH",
+          "fixture",
+          "test fixture",
+          "path override",
+          "validation testing",
+          "test isolation",
+          "manifest path",
+          "process.env",
+          "service tests",
+          "class instantiation",
+          "no TestBed",
+          "direct instantiation",
+          "spec pattern",
+          "integration testing",
+          "deterministic orchestration",
+          "loading states",
+          "success branch",
+          "failure branch",
+          "loading->ready",
+          "loading->failed",
+          "state transitions",
+          "test coverage",
+          "TestBed",
+          "ComponentFixture",
+          "component testing",
+          "fixture",
+          "detectChanges",
+          "nativeElement",
+          "querySelector"
+        ]
+      },
+      "verification-scripts": {
+        "description": "Automated verification and validation scripts for content integrity and quality gates",
+        "subcategories": [
+          "content-integrity-validation",
+          "drift-detection",
+          "prd-validation",
+          "asset-budget-validation",
+          "manifest-contract-validation"
+        ],
+        "keywords": [
+          "verification",
+          "validation",
+          "content",
+          "PRD",
+          "copy",
+          "drift",
+          "integrity",
+          "automation",
+          "scripts",
+          "mjs",
+          "asset budget",
+          "budget check",
+          "ASSET_BUDGET_ERROR",
+          "scene size",
+          "2000000 bytes",
+          "exit code",
+          "process.exitCode",
+          "SCENE_MANIFEST_PATH",
+          "fixture override",
+          "environment variable",
+          "CI/CD",
+          "quality gate",
+          "manifest",
+          "contract validation",
+          "schema validation",
+          "required fields",
+          "fusion modes",
+          "representation modes",
+          "field paths",
+          "validation errors"
+        ]
+      },
+      "service-requirements": {
+        "description": "Service-level requirements for HTTP, timeout, retry, and external integrations",
+        "subcategories": [
+          "http-timeout-retry-policy",
+          "network-configuration",
+          "asset-fetching"
+        ],
+        "keywords": [
+          "http",
+          "timeout",
+          "retry",
+          "network",
+          "transient errors",
+          "asset fetch",
+          "service requirements",
+          "micro-level plan"
+        ]
+      },
+      "error-handling": {
+        "description": "Error taxonomy, error classes, and error handling patterns",
+        "subcategories": [
+          "asset-error-taxonomy",
+          "error-classification",
+          "error-recovery"
+        ],
+        "keywords": [
+          "error handling",
+          "error taxonomy",
+          "asset errors",
+          "ASSET_FETCH_ERROR",
+          "ASSET_PARSE_ERROR",
+          "ASSET_BUDGET_ERROR",
+          "network errors",
+          "parsing errors",
+          "budget validation",
+          "error classes"
+        ]
+      },
+      "build-issues": {
+        "description": "Build configuration issues, missing dependencies, and build failures",
+        "subcategories": [
+          "angular-builder-dependency",
+          "package-missing",
+          "build-failures",
+          "dependency-resolution"
+        ],
+        "keywords": [
+          "build",
+          "angular",
+          "builder",
+          "@angular-devkit/build-angular",
+          "dependency",
+          "missing package",
+          "build failure",
+          "configuration",
+          "compile errors",
+          "minimal fixes",
+          "scoped changes",
+          "TS2339",
+          "type definitions",
+          "quality gates",
+          "verification"
+        ]
+      },
+      "dependencies": {
+        "description": "Package dependencies, type definitions, and version management",
+        "subcategories": [
+          "threejs-types",
+          "type-definitions",
+          "devDependencies",
+          "vitest-jsdom-dependency"
+        ],
+        "keywords": [
+          "typescript",
+          "types",
+          "three.js",
+          "@types/three",
+          "devDependency",
+          "type definitions",
+          "strict mode",
+          "compilation",
+          "package version",
+          "compatibility",
+          "jsdom",
+          "test environment",
+          "environment flag",
+          "testing setup"
+        ]
+      },
+      "accessibility": {
+        "description": "Accessibility patterns for dialogs, focus management, ARIA attributes, and testing",
+        "subcategories": [
+          "dialog-modal",
+          "focus-management",
+          "aria-patterns",
+          "accessibility-testing"
+        ],
+        "keywords": [
+          "accessibility",
+          "a11y",
+          "dialog",
+          "modal",
+          "aria-modal",
+          "aria-labelledby",
+          "role",
+          "tabindex",
+          "focus trap",
+          "focus restore",
+          "keyboard navigation",
+          "playwright accessibility",
+          "contrast",
+          "WCAG"
+        ]
+      },
+      "feature-behavior": {
+        "description": "Feature-specific business logic and UI behavior patterns",
+        "subcategories": [
+          "ground-truth-mode",
+          "fusion-modes",
+          "control-states"
+        ],
+        "keywords": [
+          "ground truth",
+          "fusion mode",
+          "representation",
+          "radio buttons",
+          "disabled state",
+          "control panel",
+          "isGroundTruthMode"
+        ]
+      },
+      "ui-ux-standards": {
+        "keywords": [
+          "ui",
+          "ux",
+          "styling",
+          "component",
+          "branding",
+          "purdue",
+          "tokenized",
+          "behavior",
+          "focus",
+          "interaction",
+          "baseline",
+          "live app render",
+          "e2e harness"
+        ],
+        "description": "UI/UX patterns, component styling standards, and behavior contracts",
+        "subcategories": [
+          "component-styling",
+          "component-behavior",
+          "branding-tokens"
+        ]
+      }
+    },
+    {
+      "name": "qa_validation",
+      "description": "Quality assurance validation patterns, test results, and environment setup findings",
+      "keywords": [
+        "qa",
+        "validation",
+        "testing",
+        "playwright",
+        "e2e",
+        "build",
+        "lint",
+        "branding"
+      ],
+      "related_categories": [
+        "testing",
+        "build_system",
+        "environment_setup"
+      ],
+      "ui-ux-standards": {
+        "keywords": [
+          "ui",
+          "ux",
+          "styling",
+          "component",
+          "branding",
+          "purdue",
+          "tokenized",
+          "behavior",
+          "focus",
+          "interaction",
+          "baseline",
+          "live app render",
+          "e2e harness"
+        ],
+        "description": "UI/UX patterns, component styling standards, and behavior contracts",
+        "subcategories": [
+          "component-styling",
+          "component-behavior",
+          "branding-tokens"
+        ]
+      }
+    },
+    {
+      "remediation": {
+        "description": "Codebase remediation tasks, target files, patterns, and constraints",
+        "subcategories": [
+          "rem-001-e1-e4",
+          "rem-002-bootstrap-di"
+        ],
+        "keywords": [
+          "remediation",
+          "REM-001",
+          "E1-E4",
+          "branding",
+          "Purdue colors",
+          "SCSS styling",
+          "neutral gray borders",
+          "lockfile constraints",
+          "playwright assertions",
+          "e2e testing patterns",
+          "hero-section",
+          "controls-panel",
+          "metrics-panel",
+          "REM-002",
+          "Angular bootstrap",
+          "main.ts",
+          "index.html",
+          "styles.css",
+          "DI injection tokens",
+          "type-only imports",
+          "renderer-adapter.service",
+          "demo-shell.component",
+          "angular.json configuration"
+        ]
+      },
+      "ui-ux-standards": {
+        "keywords": [
+          "ui",
+          "ux",
+          "styling",
+          "component",
+          "branding",
+          "purdue",
+          "tokenized",
+          "behavior",
+          "focus",
+          "interaction",
+          "baseline",
+          "live app render",
+          "e2e harness"
+        ],
+        "description": "UI/UX patterns, component styling standards, and behavior contracts",
+        "subcategories": [
+          "component-styling",
+          "component-behavior",
+          "branding-tokens"
+        ]
+      }
+    }
+  ],
+  "retrieval_patterns": {
+    "by_file": {
+      "tsconfig.json": [
+        "learn-001"
+      ],
+      "eslint.config.js": [
+        "learn-002",
+        "learn-004"
+      ],
+      ".prettierrc": [
+        "learn-002"
+      ],
+      ".env.example": [
+        "learn-003"
+      ],
+      "scripts/**/*.mjs": [
+        "learn-004"
+      ],
+      "src/app/core/models/*.model.ts": [
+        "learn-005",
+        "learn-007"
+      ],
+      "src/app/core/config/*.constants.ts": [
+        "learn-006",
+        "learn-007"
+      ],
+      "src/app/core/services/*.service.ts": [
+        "learn-008",
+        "learn-010",
+        "learn-011",
+        "learn-013",
+        "learn-016",
+        "learn-022",
+        "learn-023",
+        "learn-027",
+        "learn-028",
+        "learn-029",
+        "learn-037",
+        "learn-039"
+      ],
+      "src/app/core/services/*.service.spec.ts": [
+        "learn-009",
+        "learn-011",
+        "learn-036"
+      ],
+      "vitest.config.ts": [
+        "learn-009"
+      ],
+      "src/app/core/errors/": [
+        "learn-014",
+        "learn-015"
+      ],
+      "src/app/core/models/parsed-scene-payload.model.ts": [
+        "learn-024"
+      ],
+      "src/app/features/hero/*.component.ts": [
+        "learn-017",
+        "learn-018",
+        "learn-019"
+      ],
+      "src/app/features/hero/*.component.html": [
+        "learn-017"
+      ],
+      "src/app/features/hero/*.component.scss": [
+        "learn-017"
+      ],
+      "src/app/features/hero/*.component.spec.ts": [
+        "learn-017"
+      ],
+      "scripts/verify-hero-integrity.mjs": [
+        "learn-020"
+      ],
+      "e2e/demo-flow.spec.ts": [
+        "learn-021"
+      ],
+      "package.json": [
+        "learn-002",
+        "learn-025",
+        "learn-026",
+        "learn-030",
+        "learn-035",
+        "learn-048"
+      ],
+      "scripts/check-asset-budget.mjs": [
+        "learn-031",
+        "learn-033",
+        "learn-034"
+      ],
+      "scripts/check-asset-budget.spec.mjs": [
+        "learn-031",
+        "learn-034"
+      ],
+      "scripts/validate-manifest.mjs": [
+        "learn-032",
+        "learn-033"
+      ],
+      "src/assets/manifests/scene-manifest.json": [
+        "learn-031",
+        "learn-032"
+      ],
+      "src/app/features/demo/": [
+        "learn-038"
+      ],
+      "src/app/features/demo/controls-panel.component.ts": [
+        "learn-041",
+        "learn-043",
+        "learn-045",
+        "learn-047"
+      ],
+      "src/app/features/demo/controls-panel.component.html": [
+        "learn-041",
+        "learn-042"
+      ],
+      "src/app/features/demo/controls-panel.component.spec.ts": [
+        "learn-041",
+        "learn-046"
+      ],
+      "src/app/features/demo/metrics-panel.component.ts": [
+        "learn-041",
+        "learn-044",
+        "learn-045",
+        "learn-047"
+      ],
+      "src/app/features/demo/metrics-panel.component.html": [
+        "learn-041"
+      ],
+      "src/app/features/demo/metrics-panel.component.spec.ts": [
+        "learn-041",
+        "learn-046"
+      ]
+    },
+    "by_keyword": {
+      "typescript": [
+        "learn-001",
+        "learn-005",
+        "learn-006",
+        "learn-016",
+        "learn-026",
+        "learn-027",
+        "learn-028",
+        "learn-029",
+        "learn-030"
+      ],
+      "strict mode": [
+        "learn-001",
+        "learn-016",
+        "learn-026",
+        "learn-028",
+        "learn-029",
+        "learn-030"
+      ],
+      "format": [
+        "learn-002"
+      ],
+      "environment": [
+        "learn-003"
+      ],
+      "eslint": [
+        "learn-002",
+        "learn-004"
+      ],
+      "flat-config": [
+        "learn-004"
+      ],
+      "node globals": [
+        "learn-004"
+      ],
+      "no-undef": [
+        "learn-004"
+      ],
+      "console": [
+        "learn-004"
+      ],
+      "process": [
+        "learn-004"
+      ],
+      "models": [
+        "learn-005",
+        "learn-007"
+      ],
+      "type-safe": [
+        "learn-005"
+      ],
+      "readonly": [
+        "learn-005",
+        "learn-006"
+      ],
+      "as const": [
+        "learn-005",
+        "learn-006"
+      ],
+      "literal unions": [
+        "learn-005"
+      ],
+      "configuration": [
+        "learn-006",
+        "learn-007"
+      ],
+      "immutable": [
+        "learn-006"
+      ],
+      "core module": [
+        "learn-007",
+        "learn-011"
+      ],
+      "project structure": [
+        "learn-007",
+        "learn-011"
+      ],
+      "angular": [
+        "learn-007",
+        "learn-008",
+        "learn-009",
+        "learn-011"
+      ],
+      "signals": [
+        "learn-008"
+      ],
+      "state management": [
+        "learn-008"
+      ],
+      "computed": [
+        "learn-008"
+      ],
+      "reactive": [
+        "learn-008"
+      ],
+      "business rules": [
+        "learn-008",
+        "learn-010"
+      ],
+      "early return": [
+        "learn-010"
+      ],
+      "guard clause": [
+        "learn-010"
+      ],
+      "vitest": [
+        "learn-009"
+      ],
+      "test environment": [
+        "learn-009"
+      ],
+      "node environment": [
+        "learn-009"
+      ],
+      "testing": [
+        "learn-009",
+        "learn-011"
+      ],
+      "services": [
+        "learn-008",
+        "learn-010",
+        "learn-011"
+      ],
+      "spec files": [
+        "learn-011"
+      ],
+      "http": [
+        "learn-012"
+      ],
+      "timeout": [
+        "learn-012"
+      ],
+      "retry": [
+        "learn-012"
+      ],
+      "network": [
+        "learn-012"
+      ],
+      "transient errors": [
+        "learn-012"
+      ],
+      "asset fetch": [
+        "learn-012",
+        "learn-013",
+        "learn-014"
+      ],
+      "load event": [
+        "learn-013"
+      ],
+      "loading": [
+        "learn-013"
+      ],
+      "ready": [
+        "learn-013"
+      ],
+      "failed": [
+        "learn-013"
+      ],
+      "error handling": [
+        "learn-014",
+        "learn-015"
+      ],
+      "error taxonomy": [
+        "learn-014"
+      ],
+      "ASSET_FETCH_ERROR": [
+        "learn-014"
+      ],
+      "ASSET_PARSE_ERROR": [
+        "learn-014"
+      ],
+      "network errors": [
+        "learn-014"
+      ],
+      "parsing errors": [
+        "learn-014"
+      ],
+      "budget validation": [
+        "learn-014"
+      ],
+      "error classes": [
+        "learn-015"
+      ],
+      "type narrowing": [
+        "learn-016"
+      ],
+      "type widening": [
+        "learn-016"
+      ],
+      "tuple": [
+        "learn-016"
+      ],
+      "includes": [
+        "learn-016"
+      ],
+      "type guard": [
+        "learn-016"
+      ],
+      "casting": [
+        "learn-016"
+      ],
+      "features": [
+        "learn-017"
+      ],
+      "components": [
+        "learn-017",
+        "learn-018"
+      ],
+      "feature modules": [
+        "learn-017"
+      ],
+      "hero": [
+        "learn-017",
+        "learn-018",
+        "learn-019",
+        "learn-020"
+      ],
+      "output": [
+        "learn-018"
+      ],
+      "event emitter": [
+        "learn-018"
+      ],
+      "events": [
+        "learn-018"
+      ],
+      "component interaction": [
+        "learn-018"
+      ],
+      "click handler": [
+        "learn-018"
+      ],
+      "user interaction": [
+        "learn-018",
+        "learn-019",
+        "learn-021"
+      ],
+      "scroll": [
+        "learn-019"
+      ],
+      "scrollIntoView": [
+        "learn-019"
+      ],
+      "smooth scroll": [
+        "learn-019"
+      ],
+      "DOM": [
+        "learn-019"
+      ],
+      "navigation": [
+        "learn-019"
+      ],
+      "anchor navigation": [
+        "learn-019"
+      ],
+      "content validation": [
+        "learn-020"
+      ],
+      "PRD": [
+        "learn-020"
+      ],
+      "copy": [
+        "learn-020"
+      ],
+      "drift detection": [
+        "learn-020"
+      ],
+      "integrity": [
+        "learn-020"
+      ],
+      "automation": [
+        "learn-020"
+      ],
+      "mjs": [
+        "learn-004",
+        "learn-020"
+      ],
+      "scripts": [
+        "learn-004",
+        "learn-020"
+      ],
+      "e2e": [
+        "learn-021"
+      ],
+      "end-to-end": [
+        "learn-021"
+      ],
+      "playwright": [
+        "learn-021"
+      ],
+      "integration": [
+        "learn-021"
+      ],
+      "user flow": [
+        "learn-021"
+      ],
+      "idempotent": [
+        "learn-022"
+      ],
+      "redundant operations": [
+        "learn-022"
+      ],
+      "apply methods": [
+        "learn-022"
+      ],
+      "mode transitions": [
+        "learn-022"
+      ],
+      "threejs": [
+        "learn-023"
+      ],
+      "renderer": [
+        "learn-023"
+      ],
+      "disposal": [
+        "learn-023"
+      ],
+      "cleanup": [
+        "learn-023"
+      ],
+      "animation loop": [
+        "learn-023"
+      ],
+      "setAnimationLoop": [
+        "learn-023"
+      ],
+      "memory leak": [
+        "learn-023"
+      ],
+      "resource management": [
+        "learn-023"
+      ],
+      "lifecycle": [
+        "learn-023"
+      ],
+      "scene payload": [
+        "learn-024"
+      ],
+      "parsed data": [
+        "learn-024"
+      ],
+      "builder": [
+        "learn-025"
+      ],
+      "@angular-devkit/build-angular": [
+        "learn-025"
+      ],
+      "missing package": [
+        "learn-025"
+      ],
+      "build failure": [
+        "learn-025"
+      ],
+      "types": [
+        "learn-026"
+      ],
+      "three.js": [
+        "learn-026",
+        "learn-027",
+        "learn-029"
+      ],
+      "@types/three": [
+        "learn-026"
+      ],
+      "devDependency": [
+        "learn-026"
+      ],
+      "type definitions": [
+        "learn-026",
+        "learn-030"
+      ],
+      "compilation": [
+        "learn-026",
+        "learn-030"
+      ],
+      "type imports": [
+        "learn-027"
+      ],
+      "Object3D": [
+        "learn-027",
+        "learn-029"
+      ],
+      "Material": [
+        "learn-027",
+        "learn-028"
+      ],
+      "runtime imports": [
+        "learn-027"
+      ],
+      "bundle size": [
+        "learn-027"
+      ],
+      "import optimization": [
+        "learn-027"
+      ],
+      "signature narrowing": [
+        "learn-028"
+      ],
+      "undefined handling": [
+        "learn-028"
+      ],
+      "guard at call sites": [
+        "learn-028"
+      ],
+      "material disposal": [
+        "learn-028"
+      ],
+      "TS2339": [
+        "learn-028",
+        "learn-030"
+      ],
+      "type safety": [
+        "learn-028"
+      ],
+      "scene traverse": [
+        "learn-029"
+      ],
+      "type annotation": [
+        "learn-029"
+      ],
+      "explicit typing": [
+        "learn-029"
+      ],
+      "compile errors": [
+        "learn-030"
+      ],
+      "minimal fixes": [
+        "learn-030"
+      ],
+      "scoped changes": [
+        "learn-030"
+      ],
+      "verification": [
+        "learn-030"
+      ],
+      "asset budget": [
+        "learn-031",
+        "learn-035"
+      ],
+      "validation": [
+        "learn-031",
+        "learn-032",
+        "learn-033",
+        "learn-034",
+        "learn-035"
+      ],
+      "budget check": [
+        "learn-031"
+      ],
+      "ASSET_BUDGET_ERROR": [
+        "learn-031"
+      ],
+      "scene size": [
+        "learn-031"
+      ],
+      "2000000 bytes": [
+        "learn-031"
+      ],
+      "exit code": [
+        "learn-031",
+        "learn-032",
+        "learn-033",
+        "learn-035"
+      ],
+      "process.exitCode": [
+        "learn-031",
+        "learn-032",
+        "learn-033"
+      ],
+      "SCENE_MANIFEST_PATH": [
+        "learn-031",
+        "learn-034"
+      ],
+      "fixture override": [
+        "learn-031",
+        "learn-034"
+      ],
+      "environment variable": [
+        "learn-034"
+      ],
+      "CI/CD": [
+        "learn-031",
+        "learn-033",
+        "learn-035"
+      ],
+      "quality gate": [
+        "learn-031",
+        "learn-035"
+      ],
+      "manifest": [
+        "learn-032",
+        "learn-034"
+      ],
+      "contract validation": [
+        "learn-032"
+      ],
+      "schema validation": [
+        "learn-032"
+      ],
+      "required fields": [
+        "learn-032"
+      ],
+      "representation modes": [
+        "learn-032"
+      ],
+      "field paths": [
+        "learn-032"
+      ],
+      "validation errors": [
+        "learn-032"
+      ],
+      "non-zero exit": [
+        "learn-033"
+      ],
+      "graceful shutdown": [
+        "learn-033"
+      ],
+      "fail fast": [
+        "learn-033",
+        "learn-035"
+      ],
+      "npm script chains": [
+        "learn-033"
+      ],
+      "test fixture": [
+        "learn-034"
+      ],
+      "path override": [
+        "learn-034"
+      ],
+      "validation testing": [
+        "learn-034"
+      ],
+      "test isolation": [
+        "learn-034"
+      ],
+      "manifest path": [
+        "learn-034"
+      ],
+      "process.env": [
+        "learn-034"
+      ],
+      "npm scripts": [
+        "learn-035"
+      ],
+      "quality gates": [
+        "learn-035"
+      ],
+      "check chain": [
+        "learn-035"
+      ],
+      "lint": [
+        "learn-035"
+      ],
+      "test": [
+        "learn-035"
+      ],
+      "manifest contract": [
+        "learn-035"
+      ],
+      "hero check": [
+        "learn-035"
+      ],
+      "validation chain": [
+        "learn-035"
+      ],
+      "script composition": [
+        "learn-035"
+      ],
+      "service tests": [
+        "learn-036"
+      ],
+      "class instantiation": [
+        "learn-036"
+      ],
+      "no TestBed": [
+        "learn-036"
+      ],
+      "direct instantiation": [
+        "learn-036"
+      ],
+      "spec pattern": [
+        "learn-036"
+      ],
+      "inline types": [
+        "learn-037"
+      ],
+      "LoadEvent": [
+        "learn-037",
+        "learn-039"
+      ],
+      "co-location": [
+        "learn-037"
+      ],
+      "domain types": [
+        "learn-037"
+      ],
+      "service types": [
+        "learn-037"
+      ],
+      "type definition location": [
+        "learn-037"
+      ],
+      "demo": [
+        "learn-038"
+      ],
+      "folder structure": [
+        "learn-038"
+      ],
+      "organizational pattern": [
+        "learn-038"
+      ],
+      "greenfield": [
+        "learn-038"
+      ],
+      "component location": [
+        "learn-038"
+      ],
+      "load state": [
+        "learn-039"
+      ],
+      "status": [
+        "learn-039"
+      ],
+      "loading orchestration": [
+        "learn-039",
+        "learn-040"
+      ],
+      "setLoadState": [
+        "learn-039"
+      ],
+      "integration testing": [
+        "learn-040"
+      ],
+      "deterministic orchestration": [
+        "learn-040"
+      ],
+      "loading states": [
+        "learn-040"
+      ],
+      "success branch": [
+        "learn-040"
+      ],
+      "failure branch": [
+        "learn-040"
+      ],
+      "loading->ready": [
+        "learn-040"
+      ],
+      "loading->failed": [
+        "learn-040"
+      ],
+      "state transitions": [
+        "learn-040"
+      ],
+      "test coverage": [
+        "learn-040"
+      ],
+      "standalone": [
+        "learn-041"
+      ],
+      "controls panel": [
+        "learn-041",
+        "learn-042",
+        "learn-043"
+      ],
+      "metrics panel": [
+        "learn-041",
+        "learn-044"
+      ],
+      "file-based tests": [
+        "learn-041"
+      ],
+      "radio buttons": [
+        "learn-042"
+      ],
+      "attribute binding": [
+        "learn-042"
+      ],
+      "disabled state": [
+        "learn-042"
+      ],
+      "fusion modes": [
+        "learn-042"
+      ],
+      "ground truth": [
+        "learn-042",
+        "learn-043"
+      ],
+      "representation mode": [
+        "learn-042",
+        "learn-043"
+      ],
+      "state delegation": [
+        "learn-043"
+      ],
+      "service delegation": [
+        "learn-043"
+      ],
+      "component state": [
+        "learn-043"
+      ],
+      "FusionStoreService": [
+        "learn-043"
+      ],
+      "mode changes": [
+        "learn-043"
+      ],
+      "metrics": [
+        "learn-044"
+      ],
+      "METRIC_CONSTANTS": [
+        "learn-044"
+      ],
+      "dashboard metrics": [
+        "learn-044"
+      ],
+      "scoped metrics": [
+        "learn-044"
+      ],
+      "metrics separation": [
+        "learn-044"
+      ],
+      "runtime DI": [
+        "learn-045"
+      ],
+      "inject function": [
+        "learn-045"
+      ],
+      "dependency injection": [
+        "learn-045"
+      ],
+      "no constructor injection": [
+        "learn-045"
+      ],
+      "component DI": [
+        "learn-045"
+      ],
+      "DI pattern": [
+        "learn-045"
+      ],
+      "TestBed": [
+        "learn-046"
+      ],
+      "ComponentFixture": [
+        "learn-046"
+      ],
+      "fixture": [
+        "learn-046"
+      ],
+      "detectChanges": [
+        "learn-046"
+      ],
+      "nativeElement": [
+        "learn-046"
+      ],
+      "querySelector": [
+        "learn-046"
+      ],
+      "styleUrls": [
+        "learn-047"
+      ],
+      "array syntax": [
+        "learn-047"
+      ],
+      "component metadata": [
+        "learn-047"
+      ],
+      "component decorator": [
+        "learn-047"
+      ],
+      "jsdom": [
+        "learn-048"
+      ],
+      "environment flag": [
+        "learn-048"
+      ],
+      "testing setup": [
+        "learn-048"
+      ]
+    },
+    "by_context": {
+      "UOW-01": [
+        "learn-001",
+        "learn-002",
+        "learn-003"
+      ],
+      "UOW-01-revision-2": [
+        "learn-004"
+      ],
+      "change_id-001-UOW-02": [
+        "learn-005",
+        "learn-006",
+        "learn-007"
+      ],
+      "UOW-03": [
+        "learn-008",
+        "learn-009",
+        "learn-010",
+        "learn-011"
+      ],
+      "UOW-04": [
+        "learn-012",
+        "learn-013",
+        "learn-014",
+        "learn-015"
+      ],
+      "UOW-04-revision-2": [
+        "learn-016"
+      ],
+      "UOW-09": [
+        "learn-017",
+        "learn-018",
+        "learn-019",
+        "learn-020",
+        "learn-021"
+      ],
+      "UOW-05": [
+        "learn-022",
+        "learn-023",
+        "learn-024",
+        "learn-025"
+      ],
+      "UOW-05-revision-2": [
+        "learn-026",
+        "learn-027",
+        "learn-028",
+        "learn-029",
+        "learn-030"
+      ],
+      "UOW-11": [
+        "learn-031",
+        "learn-032",
+        "learn-033",
+        "learn-034",
+        "learn-035"
+      ],
+      "UOW-06": [
+        "learn-036",
+        "learn-037",
+        "learn-038",
+        "learn-039",
+        "learn-040"
+      ],
+      "UOW-07": [
+        "learn-041",
+        "learn-042",
+        "learn-043",
+        "learn-044"
+      ],
+      "UOW-07-revision-2": [
+        "learn-045",
+        "learn-046",
+        "learn-047",
+        "learn-048"
+      ]
+    }
+  },
+  "schema_changes": [
+    {
+      "date": "2025-01-30",
+      "change": "Initial schema creation",
+      "categories_added": [
+        "workspace-setup"
+      ],
+      "reason": "First knowledge entries from UOW-01 baseline setup"
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Added linting-configuration category",
+      "categories_added": [
+        "linting-configuration"
+      ],
+      "reason": "UOW-01 revision #2 discovered ESLint flat-config patterns for Node.js globals in .mjs scripts"
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Added code-patterns and project-structure categories",
+      "categories_added": [
+        "code-patterns",
+        "project-structure"
+      ],
+      "reason": "change_id 001 UOW-02 established foundational TypeScript model patterns and Angular core module organization"
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Extended code-patterns with signal-based-state-management and business-rule-enforcement subcategories; added testing category",
+      "categories_added": [
+        "testing"
+      ],
+      "subcategories_added": [
+        "signal-based-state-management",
+        "business-rule-enforcement",
+        "service-organization",
+        "vitest-environment-configuration"
+      ],
+      "reason": "UOW-03 established Angular signals state management pattern, business rule enforcement via early-return guards, service organization with co-located tests, and discovered Vitest environment configuration issues"
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Added service-requirements and error-handling categories",
+      "categories_added": [
+        "service-requirements",
+        "error-handling"
+      ],
+      "subcategories_added": [
+        "http-timeout-retry-policy",
+        "load-event-types",
+        "asset-error-taxonomy",
+        "error-handling-organization"
+      ],
+      "reason": "UOW-04 exploration discovered scene asset service requirements including 12s timeout, one-retry policy, LoadEvent union types, and three-tier error taxonomy (ASSET_FETCH_ERROR, ASSET_PARSE_ERROR, ASSET_BUDGET_ERROR)"
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Extended code-patterns with typescript-strict-type-narrowing subcategory",
+      "subcategories_added": [
+        "typescript-strict-type-narrowing"
+      ],
+      "reason": "UOW-04 revision #2 discovered pattern for handling strict TypeScript tuple includes checks and return type narrowing with widening/casting"
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Added verification-scripts category and extended project-structure, code-patterns, and testing categories",
+      "categories_added": [
+        "verification-scripts"
+      ],
+      "subcategories_added": [
+        "feature-module-organization",
+        "angular-event-emission",
+        "dom-scroll-behavior",
+        "content-integrity-validation",
+        "e2e-organization"
+      ],
+      "reason": "UOW-09 established hero component with feature-based organization, Angular @Output() event pattern, scrollIntoView DOM API usage, automated PRD content validation scripts, and Playwright e2e testing patterns"
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Added build-issues category and extended code-patterns with idempotent-guards, threejs-disposal, and parsed-scene-payload subcategories",
+      "categories_added": [
+        "build-issues"
+      ],
+      "subcategories_added": [
+        "idempotent-guards",
+        "threejs-disposal",
+        "parsed-scene-payload",
+        "angular-builder-dependency"
+      ],
+      "reason": "UOW-05 established renderer adapter service with idempotent guard pattern (early-return for redundant state changes), Three.js disposal pattern (setAnimationLoop(null) before dispose()), ParsedScenePayload model, and discovered missing @angular-devkit/build-angular builder dependency"
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Added dependencies category and extended code-patterns and build-issues categories",
+      "categories_added": [
+        "dependencies"
+      ],
+      "subcategories_added": [
+        "threejs-types",
+        "threejs-type-imports",
+        "signature-narrowing",
+        "threejs-traverse-typing",
+        "dependency-resolution"
+      ],
+      "reason": "UOW-05 revision #2 resolved TypeScript strict compilation errors by adding @types/three dependency, using explicit type imports for Three.js interfaces (type Object3D, type Material), narrowing disposeMaterial signature to Material | Material[] (removing undefined), and annotating scene traverse with explicit Object3D type. Established minimal scoped fix pattern for TypeScript compile failures."
+    },
+    {
+      "date": "2025-01-30",
+      "change": "Extended verification-scripts, code-patterns, workspace-setup, and testing categories",
+      "categories_added": [],
+      "subcategories_added": [
+        "asset-budget-validation",
+        "manifest-contract-validation",
+        "validation-exit-code-pattern",
+        "npm-script-quality-gates",
+        "environment-fixture-override"
+      ],
+      "reason": "UOW-11 established asset budget validation script (2M byte limit with SCENE_MANIFEST_PATH env override), manifest contract validation (required fields + allowed values for fusion/representation modes), process.exitCode=1 exit pattern for CI/CD integration, npm script quality gate chain (check:asset-budget + check:manifest-contract in check chain), and environment variable-based fixture override pattern for validation testing."
+    },
+    {
+      "date": "2025-02-15",
+      "change": "Extended testing and code-patterns categories with integration testing patterns",
+      "categories_added": [],
+      "subcategories_added": [
+        "integration-testing"
+      ],
+      "reason": "UOW-06 exploration findings established service test pattern (direct class instantiation without TestBed), LoadEvent inline type definition pattern, demo feature folder greenfield status, FusionStoreService setLoadState pattern with status+error, and integration spec requirements for deterministic loading orchestration with success/failure branch testing."
+    },
+    {
+      "date": "2025-02-15",
+      "change": "Extended code-patterns category with UI template binding and state delegation patterns",
+      "categories_added": [],
+      "subcategories_added": [
+        "angular-template-binding",
+        "component-state-delegation",
+        "metrics-binding"
+      ],
+      "reason": "UOW-07 implementation established controls panel and metrics panel patterns: explicit radio options with [disabled] attribute binding for computed UI states, component state delegation to FusionStoreService via computed property guards (isGroundTruthMode getter), and metrics panel binding to scoped METRIC_CONSTANTS subsets (dashboard vs. hero metrics separation)."
+    },
+    {
+      "date": "2025-02-15",
+      "change": "Extended code-patterns, testing, and dependencies categories with Angular standalone component patterns",
+      "categories_added": [],
+      "subcategories_added": [
+        "angular-runtime-di",
+        "angular-component-metadata",
+        "component-test-pattern",
+        "vitest-jsdom-dependency"
+      ],
+      "reason": "UOW-07 revision #2 established runtime DI pattern for standalone components (inject() function instead of constructor injection), styleUrls array syntax requirement in component metadata, TestBed-based component spec pattern with ComponentFixture for testing Angular components, and jsdom devDependency addition to resolve Vitest default environment issues."
+    }
+  ]
+}

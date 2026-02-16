@@ -1,0 +1,43 @@
+:host {
+  --purdue-black: #000000;
+  --purdue-gold: #cfb991;
+  --purdue-gold-dark: #9d7a2e;
+}
+
+.controls-panel {
+  color: var(--purdue-black);
+  display: grid;
+  gap: 1rem;
+}
+
+.control-group {
+  background: #fffdfa;
+  border: 1px solid var(--purdue-gold);
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+}
+
+#controls-panel-title {
+  border-bottom: 2px solid var(--purdue-gold);
+  color: var(--purdue-black);
+  margin: 0;
+  padding-bottom: 0.35rem;
+}
+
+legend {
+  color: var(--purdue-black);
+  font-weight: 700;
+}
+
+label {
+  align-items: center;
+  color: var(--purdue-black);
+  display: flex;
+  gap: 0.5rem;
+}
+
+input[type="radio"] {
+  accent-color: var(--purdue-gold-dark);
+}

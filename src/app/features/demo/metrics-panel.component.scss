@@ -1,0 +1,43 @@
+:host {
+  --purdue-black: #000000;
+  --purdue-gold: #cfb991;
+  --purdue-gold-dark: #9d7a2e;
+}
+
+.metrics-panel {
+  color: var(--purdue-black);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.metric-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.metric-card {
+  background: #fffcf3;
+  border: 1px solid var(--purdue-gold);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.metric-label {
+  color: var(--purdue-gold-dark);
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.metric-value {
+  color: var(--purdue-black);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0.25rem 0 0;
+}
+
+.approximate-label {
+  color: var(--purdue-gold-dark);
+  font-size: 0.875rem;
+  font-weight: 400;
+}

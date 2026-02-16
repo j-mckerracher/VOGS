@@ -1,0 +1,59 @@
+:host {
+  --purdue-black: #000000;
+  --purdue-gold: #cfb991;
+  --purdue-gold-dark: #9d7a2e;
+  --purdue-cream: #f8f4e8;
+}
+
+.hero-section {
+  background: linear-gradient(180deg, #ffffff 0%, var(--purdue-cream) 100%);
+  color: var(--purdue-black);
+  padding: 3rem 1.5rem;
+}
+
+.hero-content {
+  margin: 0 auto;
+  max-width: 64rem;
+}
+
+.hero-title {
+  color: var(--purdue-black);
+}
+
+.hero-subtitle {
+  color: var(--purdue-gold-dark);
+}
+
+.hero-stats {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 2rem 0;
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid var(--purdue-gold);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.stat-label {
+  color: var(--purdue-gold-dark);
+  font-weight: 600;
+}
+
+.hero-button {
+  background: var(--purdue-black);
+  border: 1px solid var(--purdue-gold);
+  border-radius: 0.5rem;
+  color: var(--purdue-gold);
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0.65rem 1.1rem;
+}
+
+.hero-button:hover,
+.hero-button:focus-visible {
+  background: #1c1c1c;
+}

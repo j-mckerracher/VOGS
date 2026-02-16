@@ -1,0 +1,1412 @@
+{
+  "learnings": [
+    {
+      "id": "learn-001",
+      "category": "workspace-setup",
+      "subcategory": "typescript-configuration",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-01",
+      "pattern": "TypeScript strict mode configuration",
+      "files": [
+        "tsconfig.json"
+      ],
+      "keywords": [
+        "typescript",
+        "strict mode",
+        "noImplicitAny",
+        "strictNullChecks",
+        "configuration"
+      ],
+      "description": "TypeScript uses strict mode with noImplicitAny and strictNullChecks enabled",
+      "code_snippet": "\"strict\": true, \"noImplicitAny\": true, \"strictNullChecks\": true"
+    },
+    {
+      "id": "learn-002",
+      "category": "workspace-setup",
+      "subcategory": "build-tooling",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-01",
+      "pattern": "Package scripts baseline",
+      "files": [
+        "package.json",
+        "eslint.config.js",
+        ".prettierrc"
+      ],
+      "keywords": [
+        "npm scripts",
+        "eslint",
+        "prettier",
+        "lint",
+        "format",
+        "baseline"
+      ],
+      "description": "Package scripts baseline aligns to micro-level plan 3.2 with lint/format configuration",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-003",
+      "category": "workspace-setup",
+      "subcategory": "environment-configuration",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-01",
+      "pattern": "Environment configuration template",
+      "files": [
+        ".env.example"
+      ],
+      "keywords": [
+        "environment",
+        "configuration",
+        "env",
+        "template"
+      ],
+      "description": "Required environment keys defined in .env.example template",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-004",
+      "category": "linting-configuration",
+      "subcategory": "eslint-flat-config",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-01-revision-2",
+      "pattern": "ESLint Node.js globals for .mjs scripts",
+      "files": [
+        "eslint.config.js",
+        "scripts/**/*.mjs"
+      ],
+      "keywords": [
+        "eslint",
+        "flat-config",
+        "node globals",
+        "mjs",
+        "console",
+        "process",
+        "no-undef"
+      ],
+      "description": "ESLint flat-config requires explicit Node globals (console, process) for .mjs scripts to avoid no-undef errors",
+      "code_snippet": "files: ['scripts/**/*.mjs'], languageOptions: { globals: { console: 'readonly', process: 'readonly' } }"
+    },
+    {
+      "id": "learn-005",
+      "category": "code-patterns",
+      "subcategory": "type-safe-models",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "change_id-001-UOW-02",
+      "pattern": "Type-safe literal unions from readonly const arrays",
+      "files": [
+        "src/app/core/models/fusion-mode.model.ts",
+        "src/app/core/models/representation-mode.model.ts",
+        "src/app/core/models/load-state.model.ts",
+        "src/app/core/models/scene-manifest.model.ts"
+      ],
+      "keywords": [
+        "typescript",
+        "models",
+        "type-safe",
+        "literal unions",
+        "readonly",
+        "const arrays",
+        "type narrowing"
+      ],
+      "description": "Model files use readonly const arrays to define allowed values, then derive TypeScript union types for type safety",
+      "code_snippet": "export const FUSION_MODES = ['orthographic', 'perspective', 'hybrid'] as const; export type FusionMode = typeof FUSION_MODES[number];"
+    },
+    {
+      "id": "learn-006",
+      "category": "code-patterns",
+      "subcategory": "immutable-constants",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "change_id-001-UOW-02",
+      "pattern": "Immutable configuration constants with as const",
+      "files": [
+        "src/app/core/config/metrics.constants.ts"
+      ],
+      "keywords": [
+        "typescript",
+        "configuration",
+        "constants",
+        "immutable",
+        "as const",
+        "type narrowing",
+        "readonly"
+      ],
+      "description": "Configuration constants use 'as const' assertion for immutability and precise type narrowing",
+      "code_snippet": "export const METRICS = { MAX_LOAD_TIME_MS: 5000, CACHE_SIZE_MB: 128 } as const;"
+    },
+    {
+      "id": "learn-007",
+      "category": "project-structure",
+      "subcategory": "core-organization",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "change_id-001-UOW-02",
+      "pattern": "Core module organization pattern",
+      "files": [
+        "src/app/core/models/",
+        "src/app/core/config/"
+      ],
+      "keywords": [
+        "angular",
+        "project structure",
+        "core module",
+        "models",
+        "config",
+        "organization"
+      ],
+      "description": "Models placed in src/app/core/models/, configuration constants in src/app/core/config/",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-008",
+      "category": "code-patterns",
+      "subcategory": "signal-based-state-management",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-03",
+      "pattern": "Angular signals for state management with private writable signal and readonly computed selectors",
+      "files": [
+        "src/app/core/services/fusion-store.service.ts",
+        "src/app/core/models/fusion-state.model.ts"
+      ],
+      "keywords": [
+        "angular",
+        "signals",
+        "state management",
+        "computed",
+        "readonly",
+        "writable signal",
+        "reactive",
+        "selectors",
+        "business rules"
+      ],
+      "description": "State management services use private writable signals with readonly computed selectors for controlled state access. Business rules enforced in setter methods (e.g., early-return guards).",
+      "code_snippet": "private readonly state = signal<FusionState>({...}); public readonly fusionMode = computed(() => this.state().fusionMode); setRepresentationMode(mode) { if (this.state().fusionMode === 'ground_truth') return; this.state.update(s => ({...s, representationMode: mode})); }"
+    },
+    {
+      "id": "learn-009",
+      "category": "testing",
+      "subcategory": "vitest-environment-configuration",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-03",
+      "pattern": "Vitest environment configuration for Angular tests",
+      "files": [
+        "src/app/core/services/fusion-store.service.spec.ts",
+        "vitest.config.ts"
+      ],
+      "keywords": [
+        "vitest",
+        "test environment",
+        "jsdom",
+        "node environment",
+        "angular testing",
+        "environment flag",
+        "dependency"
+      ],
+      "description": "Vitest default jsdom environment has missing dependency issue. Tests pass when run with --environment node flag. May need vitest configuration adjustment or dependency installation.",
+      "code_snippet": "vitest --environment node"
+    },
+    {
+      "id": "learn-010",
+      "category": "code-patterns",
+      "subcategory": "business-rule-enforcement",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-03",
+      "pattern": "Read-only guard with early-return pattern for state mutations",
+      "files": [
+        "src/app/core/services/fusion-store.service.ts"
+      ],
+      "keywords": [
+        "business rules",
+        "early return",
+        "guard clause",
+        "read-only",
+        "state mutation",
+        "ground_truth",
+        "conditional logic"
+      ],
+      "description": "Business rules enforced via early-return guards in setter methods. Example: setRepresentationMode early-returns when fusionMode is 'ground_truth' to prevent mutations in read-only mode.",
+      "code_snippet": "if (this.state().fusionMode === 'ground_truth') { return; }"
+    },
+    {
+      "id": "learn-011",
+      "category": "project-structure",
+      "subcategory": "service-organization",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-03",
+      "pattern": "Service file organization with co-located tests",
+      "files": [
+        "src/app/core/services/fusion-store.service.ts",
+        "src/app/core/services/fusion-store.service.spec.ts"
+      ],
+      "keywords": [
+        "angular",
+        "services",
+        "project structure",
+        "testing",
+        "co-location",
+        "spec files",
+        "core module"
+      ],
+      "description": "Services placed in src/app/core/services/ with co-located .spec.ts test files following naming convention {service-name}.service.ts and {service-name}.service.spec.ts",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-012",
+      "category": "service-requirements",
+      "subcategory": "http-timeout-retry-policy",
+      "date": "2025-01-30",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-04",
+      "pattern": "HTTP service timeout and retry configuration",
+      "files": [
+        "C:/Users/jmckerra/ObsidianNotes/Main/01-Projects/Demo-Gaussian-Splat/Planning/micro-level-plan.md"
+      ],
+      "keywords": [
+        "http",
+        "timeout",
+        "retry",
+        "network",
+        "transient errors",
+        "asset fetch",
+        "12 seconds",
+        "one retry",
+        "micro-level plan"
+      ],
+      "description": "Scene asset service requires 12 second timeout for fetch operations and exactly one retry for transient network errors (per micro-level plan section 4.1 and 6.2/6.3)",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-013",
+      "category": "code-patterns",
+      "subcategory": "load-event-types",
+      "date": "2025-01-30",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-04",
+      "pattern": "LoadEvent union type for asset loading state",
+      "files": [
+        "src/app/core/services/scene-asset.service.ts"
+      ],
+      "keywords": [
+        "typescript",
+        "union types",
+        "load event",
+        "loading",
+        "ready",
+        "failed",
+        "asset state",
+        "state tracking"
+      ],
+      "description": "LoadEvent uses readonly const array pattern for type-safe union: loading | ready | failed",
+      "code_snippet": "export const LOAD_EVENTS = ['loading', 'ready', 'failed'] as const; export type LoadEvent = typeof LOAD_EVENTS[number];"
+    },
+    {
+      "id": "learn-014",
+      "category": "error-handling",
+      "subcategory": "asset-error-taxonomy",
+      "date": "2025-01-30",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-04",
+      "pattern": "Error taxonomy for asset operations",
+      "files": [
+        "src/app/core/errors/"
+      ],
+      "keywords": [
+        "error handling",
+        "error taxonomy",
+        "asset errors",
+        "ASSET_FETCH_ERROR",
+        "ASSET_PARSE_ERROR",
+        "ASSET_BUDGET_ERROR",
+        "network errors",
+        "parsing errors",
+        "budget validation"
+      ],
+      "description": "Three-tier error taxonomy for asset operations: ASSET_FETCH_ERROR (network/HTTP), ASSET_PARSE_ERROR (JSON/manifest parsing), ASSET_BUDGET_ERROR (size limits)",
+      "code_snippet": "export const ASSET_ERRORS = { FETCH: 'ASSET_FETCH_ERROR', PARSE: 'ASSET_PARSE_ERROR', BUDGET: 'ASSET_BUDGET_ERROR' } as const;"
+    },
+    {
+      "id": "learn-015",
+      "category": "project-structure",
+      "subcategory": "error-handling-organization",
+      "date": "2025-01-30",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-04",
+      "pattern": "Error handling file organization",
+      "files": [
+        "src/app/core/errors/"
+      ],
+      "keywords": [
+        "angular",
+        "errors",
+        "error classes",
+        "core module",
+        "organization",
+        "error taxonomy"
+      ],
+      "description": "Error classes and error handling utilities located in src/app/core/errors/ directory",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-016",
+      "category": "code-patterns",
+      "subcategory": "typescript-strict-type-narrowing",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-04-revision-2",
+      "pattern": "Type widening for tuple includes checks and explicit casting after guard validation",
+      "files": [
+        "src/app/core/services/scene-asset.service.ts"
+      ],
+      "keywords": [
+        "typescript",
+        "strict mode",
+        "type narrowing",
+        "tuple",
+        "includes",
+        "type widening",
+        "type guard",
+        "casting",
+        "readonly",
+        "const array",
+        "return type"
+      ],
+      "description": "Strict TypeScript requires widening readonly tuple types for .includes() checks (as readonly string[]|number[]) and explicit casting after guard validation (return value as NarrowType)",
+      "code_snippet": "if (!(CONST_ARRAY as readonly string[]).includes(value)) return null; return value as NarrowType;"
+    },
+    {
+      "id": "learn-017",
+      "category": "project-structure",
+      "subcategory": "feature-module-organization",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-09",
+      "pattern": "Feature-based component organization",
+      "files": [
+        "src/app/features/hero/hero-section.component.ts",
+        "src/app/features/hero/hero-section.component.html",
+        "src/app/features/hero/hero-section.component.scss",
+        "src/app/features/hero/hero-section.component.spec.ts"
+      ],
+      "keywords": [
+        "angular",
+        "features",
+        "components",
+        "organization",
+        "feature modules",
+        "hero",
+        "project structure"
+      ],
+      "description": "Feature components organized in src/app/features/{feature-name}/ with component, template, styles, and spec files co-located",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-018",
+      "category": "code-patterns",
+      "subcategory": "angular-event-emission",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-09",
+      "pattern": "Angular @Output() EventEmitter pattern for component events",
+      "files": [
+        "src/app/features/hero/hero-section.component.ts"
+      ],
+      "keywords": [
+        "angular",
+        "output",
+        "event emitter",
+        "events",
+        "component interaction",
+        "click handler",
+        "user interaction"
+      ],
+      "description": "Components use @Output() with EventEmitter for parent communication. Handler methods emit events and execute side effects (e.g., scroll behavior).",
+      "code_snippet": "@Output() viewDemo = new EventEmitter<void>(); onViewDemoClick(): void { this.viewDemo.emit(); document.getElementById('demo-section')?.scrollIntoView({ behavior: 'smooth' }); }"
+    },
+    {
+      "id": "learn-019",
+      "category": "code-patterns",
+      "subcategory": "dom-scroll-behavior",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-09",
+      "pattern": "Native DOM scrollIntoView for smooth scroll navigation",
+      "files": [
+        "src/app/features/hero/hero-section.component.ts"
+      ],
+      "keywords": [
+        "scroll",
+        "scrollIntoView",
+        "smooth scroll",
+        "DOM",
+        "navigation",
+        "user interaction",
+        "anchor navigation"
+      ],
+      "description": "Use native scrollIntoView API with behavior: 'smooth' for anchor-based navigation. Guard with element existence check.",
+      "code_snippet": "const element = document.getElementById('demo-section'); if (element) { element.scrollIntoView({ behavior: 'smooth' }); }"
+    },
+    {
+      "id": "learn-020",
+      "category": "verification-scripts",
+      "subcategory": "content-integrity-validation",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-09",
+      "pattern": "Automated content validation scripts for PRD copy verification",
+      "files": [
+        "scripts/verify-hero-integrity.mjs"
+      ],
+      "keywords": [
+        "verification",
+        "content validation",
+        "PRD",
+        "copy",
+        "drift detection",
+        "integrity",
+        "automation",
+        "mjs",
+        "scripts"
+      ],
+      "description": "Use .mjs verification scripts to validate canonical PRD content against implementation. Flag drift >1.9 characters outside target files (exclude test files).",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-021",
+      "category": "testing",
+      "subcategory": "e2e-organization",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-09",
+      "pattern": "E2E test organization with Playwright",
+      "files": [
+        "e2e/demo-flow.spec.ts"
+      ],
+      "keywords": [
+        "e2e",
+        "end-to-end",
+        "playwright",
+        "testing",
+        "integration",
+        "user flow",
+        "organization"
+      ],
+      "description": "End-to-end tests placed in e2e/ directory using Playwright for user flow validation",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-022",
+      "category": "code-patterns",
+      "subcategory": "idempotent-guards",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05",
+      "pattern": "Idempotent guard pattern for state-changing methods",
+      "files": [
+        "src/app/core/services/renderer-adapter.service.ts"
+      ],
+      "keywords": [
+        "idempotent",
+        "early return",
+        "guard clause",
+        "state change",
+        "redundant operations",
+        "performance",
+        "apply methods",
+        "mode transitions"
+      ],
+      "description": "Service methods that change state use early-return guards to prevent redundant operations. Pattern: if (this.property === newValue) { return; } before applying changes.",
+      "code_snippet": "if (this.fusionMode === mode) { return; }"
+    },
+    {
+      "id": "learn-023",
+      "category": "code-patterns",
+      "subcategory": "threejs-disposal",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05",
+      "pattern": "Three.js renderer disposal with animation loop teardown",
+      "files": [
+        "src/app/core/services/renderer-adapter.service.ts"
+      ],
+      "keywords": [
+        "threejs",
+        "renderer",
+        "disposal",
+        "cleanup",
+        "animation loop",
+        "setAnimationLoop",
+        "memory leak",
+        "resource management",
+        "lifecycle"
+      ],
+      "description": "When disposing Three.js renderer, must call setAnimationLoop(null) before dispose() to properly stop animation loop and prevent memory leaks",
+      "code_snippet": "renderer.setAnimationLoop(null); renderer.dispose();"
+    },
+    {
+      "id": "learn-024",
+      "category": "code-patterns",
+      "subcategory": "parsed-scene-payload",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05",
+      "pattern": "ParsedScenePayload model for renderer data structure",
+      "files": [
+        "src/app/core/models/parsed-scene-payload.model.ts"
+      ],
+      "keywords": [
+        "model",
+        "scene payload",
+        "parsed data",
+        "renderer",
+        "data structure",
+        "type definition"
+      ],
+      "description": "ParsedScenePayload model defines the data structure for scene payload processed by renderer adapter",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-025",
+      "category": "build-issues",
+      "subcategory": "angular-builder-dependency",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05",
+      "pattern": "Missing Angular builder package dependency",
+      "files": [
+        "package.json"
+      ],
+      "keywords": [
+        "build",
+        "angular",
+        "builder",
+        "@angular-devkit/build-angular",
+        "dependency",
+        "missing package",
+        "build failure"
+      ],
+      "description": "Build currently fails due to missing @angular-devkit/build-angular:application builder package dependency",
+      "code_snippet": null
+    },
+    {
+      "id": "learn-026",
+      "category": "dependencies",
+      "subcategory": "threejs-types",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05-revision-2",
+      "pattern": "@types/three dependency for TypeScript compilation",
+      "files": [
+        "package.json"
+      ],
+      "keywords": [
+        "typescript",
+        "types",
+        "three.js",
+        "@types/three",
+        "devDependency",
+        "type definitions",
+        "strict mode",
+        "compilation"
+      ],
+      "description": "Three.js requires @types/three devDependency for TypeScript type definitions. Version must match three.js package version for compatibility.",
+      "code_snippet": "@types/three@0.167.2 (devDependency)"
+    },
+    {
+      "id": "learn-027",
+      "category": "code-patterns",
+      "subcategory": "threejs-type-imports",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05-revision-2",
+      "pattern": "Three.js type imports to avoid runtime imports",
+      "files": [
+        "src/app/core/services/renderer-adapter.service.ts"
+      ],
+      "keywords": [
+        "typescript",
+        "type imports",
+        "three.js",
+        "Object3D",
+        "Material",
+        "runtime imports",
+        "bundle size",
+        "import optimization"
+      ],
+      "description": "Use explicit type imports for Three.js interfaces (type Object3D, type Material) to prevent runtime imports and reduce bundle size",
+      "code_snippet": "import { Scene, WebGLRenderer, Camera, type Object3D, type Material } from 'three';"
+    },
+    {
+      "id": "learn-028",
+      "category": "code-patterns",
+      "subcategory": "signature-narrowing",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05-revision-2",
+      "pattern": "Method signature narrowing by removing undefined and guarding at call sites",
+      "files": [
+        "src/app/core/services/renderer-adapter.service.ts"
+      ],
+      "keywords": [
+        "typescript",
+        "signature narrowing",
+        "undefined handling",
+        "guard at call sites",
+        "strict mode",
+        "material disposal",
+        "TS2339",
+        "type safety"
+      ],
+      "description": "When strict compile surfaces TS2339 errors on undefined handling, narrow method signature by removing undefined and guard against undefined at call sites before invoking method",
+      "code_snippet": "private disposeMaterial(material: Material | Material[]): void { ... } // Narrowed from Material | Material[] | undefined"
+    },
+    {
+      "id": "learn-029",
+      "category": "code-patterns",
+      "subcategory": "threejs-traverse-typing",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05-revision-2",
+      "pattern": "Explicit Object3D type annotation for scene traversal",
+      "files": [
+        "src/app/core/services/renderer-adapter.service.ts"
+      ],
+      "keywords": [
+        "typescript",
+        "three.js",
+        "scene traverse",
+        "Object3D",
+        "type annotation",
+        "strict mode",
+        "explicit typing"
+      ],
+      "description": "Scene traversal requires explicit Object3D type annotation for node parameter in strict TypeScript mode",
+      "code_snippet": "this.scene.traverse((node: Object3D) => { ... })"
+    },
+    {
+      "id": "learn-030",
+      "category": "build-issues",
+      "subcategory": "dependency-resolution",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-05-revision-2",
+      "pattern": "Minimal scoped TypeScript compile fixes",
+      "files": [
+        "package.json",
+        "src/app/core/services/renderer-adapter.service.ts"
+      ],
+      "keywords": [
+        "typescript",
+        "compile errors",
+        "minimal fixes",
+        "scoped changes",
+        "TS2339",
+        "type definitions",
+        "quality gates",
+        "verification"
+      ],
+      "description": "For TypeScript compile failures, apply minimal scoped fixes: add missing type dependencies, use type imports, narrow signatures, and verify with tsc --noEmit + targeted tests + lint",
+      "code_snippet": "npx tsc --noEmit && vitest --run (targeted) && npm run lint"
+    },
+    {
+      "id": "learn-031",
+      "category": "verification-scripts",
+      "subcategory": "asset-budget-validation",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-11",
+      "pattern": "Asset budget validation with environment-based fixture override",
+      "files": [
+        "scripts/check-asset-budget.mjs",
+        "scripts/check-asset-budget.spec.mjs",
+        "src/assets/manifests/scene-manifest.json"
+      ],
+      "keywords": [
+        "asset budget",
+        "validation",
+        "budget check",
+        "ASSET_BUDGET_ERROR",
+        "scene size",
+        "2000000 bytes",
+        "exit code",
+        "process.exitCode",
+        "SCENE_MANIFEST_PATH",
+        "fixture override",
+        "environment variable",
+        "CI/CD",
+        "quality gate"
+      ],
+      "description": "Asset budget validation script checks scene totals against 2,000,000 byte budget. Uses SCENE_MANIFEST_PATH env var for fixture overrides. Sets process.exitCode=1 on violations. Outputs ASSET_BUDGET_ERROR with per-scene details.",
+      "code_snippet": "export const SCENE_ASSET_BUDGET_BYTES = 2_000_000; export function getManifestPath() { return resolve(process.cwd(), process.env.SCENE_MANIFEST_PATH ?? DEFAULT_MANIFEST_PATH); } if (!result.ok) { process.exitCode = 1; }"
+    },
+    {
+      "id": "learn-032",
+      "category": "verification-scripts",
+      "subcategory": "manifest-contract-validation",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-11",
+      "pattern": "Manifest contract validation with required fields and value constraints",
+      "files": [
+        "scripts/validate-manifest.mjs",
+        "src/assets/manifests/scene-manifest.json"
+      ],
+      "keywords": [
+        "manifest",
+        "contract validation",
+        "schema validation",
+        "required fields",
+        "fusion modes",
+        "representation modes",
+        "manifest.version",
+        "manifest.generatedAt",
+        "sceneId",
+        "displayName",
+        "defaultFusionMode",
+        "defaultRepresentationMode",
+        "assets array",
+        "exit code",
+        "process.exitCode",
+        "field paths",
+        "validation errors"
+      ],
+      "description": "Manifest contract validation checks required fields (version, generatedAt, scenes[], sceneId, displayName, etc.) and allowed values for fusion/representation modes. Reports all violations with field paths. Sets process.exitCode=1 on failure.",
+      "code_snippet": "const FUSION_MODES = ['single_agent', 'naive_fusion', 'vogs', 'ground_truth']; const REPRESENTATION_MODES = ['occupancy', 'gaussian']; if (typeof scene.defaultFusionMode !== 'string' || !FUSION_MODES.includes(scene.defaultFusionMode)) { errors.push(`${scenePath}.defaultFusionMode must be one of: ${FUSION_MODES.join(', ')}.`); }"
+    },
+    {
+      "id": "learn-033",
+      "category": "code-patterns",
+      "subcategory": "validation-exit-code-pattern",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-11",
+      "pattern": "Non-throwing validation exit with process.exitCode for CI/CD integration",
+      "files": [
+        "scripts/check-asset-budget.mjs",
+        "scripts/validate-manifest.mjs"
+      ],
+      "keywords": [
+        "exit code",
+        "process.exitCode",
+        "non-zero exit",
+        "graceful shutdown",
+        "CI/CD",
+        "validation",
+        "error handling",
+        "fail fast",
+        "npm script chains",
+        "quality gates"
+      ],
+      "description": "Validation scripts use process.exitCode = 1 pattern instead of throwing or process.exit() to signal failure while allowing graceful shutdown. Enables npm script chains to fail fast in CI/CD pipelines.",
+      "code_snippet": "if (!result.ok) { process.exitCode = 1; } // Non-zero exit for CI/CD"
+    },
+    {
+      "id": "learn-034",
+      "category": "testing",
+      "subcategory": "environment-fixture-override",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-11",
+      "pattern": "Environment variable-based fixture path override for validation testing",
+      "files": [
+        "scripts/check-asset-budget.spec.mjs",
+        "scripts/check-asset-budget.mjs"
+      ],
+      "keywords": [
+        "environment variable",
+        "SCENE_MANIFEST_PATH",
+        "fixture",
+        "test fixture",
+        "path override",
+        "validation testing",
+        "test isolation",
+        "manifest path",
+        "process.env"
+      ],
+      "description": "Use SCENE_MANIFEST_PATH environment variable to override default manifest path for testing with fixtures. Enables testing validation logic without modifying source manifests.",
+      "code_snippet": "process.env.SCENE_MANIFEST_PATH = resolve(__dirname, 'fixtures/oversized-scene.json'); const result = runBudgetCheck();"
+    },
+    {
+      "id": "learn-035",
+      "category": "workspace-setup",
+      "subcategory": "npm-script-quality-gates",
+      "date": "2025-01-30",
+      "discovered_by": "software_engineer",
+      "context": "UOW-11",
+      "pattern": "Chained npm script quality gates for comprehensive validation",
+      "files": [
+        "package.json"
+      ],
+      "keywords": [
+        "npm scripts",
+        "quality gates",
+        "check chain",
+        "lint",
+        "test",
+        "asset budget",
+        "manifest contract",
+        "hero check",
+        "CI/CD",
+        "validation chain",
+        "fail fast",
+        "script composition"
+      ],
+      "description": "Quality gate chain composed with npm run check: lint && test && check:asset-budget && check:manifest-contract && check:hero. Each validation integrated as individual script (check:asset-budget, check:manifest-contract) for granular execution and CI/CD integration.",
+      "code_snippet": "\"check:asset-budget\": \"node scripts/check-asset-budget.mjs\", \"check:manifest-contract\": \"node scripts/validate-manifest.mjs\", \"check\": \"npm run lint && npm run test && npm run check:asset-budget && npm run check:manifest-contract && npm run check:hero\""
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-06",
+      "description": "Service spec pattern instantiates classes directly with 'new ServiceClass()' in beforeEach() blocks without using Angular TestBed.configureTestingModule() or TestBed.inject()",
+      "id": "learn-036",
+      "category": "testing",
+      "keywords": [
+        "vitest",
+        "testing",
+        "service tests",
+        "class instantiation",
+        "no TestBed",
+        "unit tests",
+        "direct instantiation",
+        "spec pattern"
+      ],
+      "pattern": "Service specs use direct class instantiation without TestBed",
+      "subcategory": "unit-testing",
+      "code_snippet": "const service = new SceneAssetService();",
+      "files": [
+        "src/app/core/services/scene-asset.service.spec.ts",
+        "src/app/core/services/fusion-store.service.spec.ts",
+        "src/app/core/services/renderer-adapter.service.spec.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-06",
+      "description": "LoadEvent types ('loading' | 'ready' | 'failed') defined inline within service file rather than extracted to separate model file in src/app/core/models/",
+      "id": "learn-037",
+      "category": "code-patterns",
+      "keywords": [
+        "typescript",
+        "types",
+        "inline types",
+        "LoadEvent",
+        "co-location",
+        "domain types",
+        "service types",
+        "type definition location"
+      ],
+      "pattern": "LoadEvent types defined inline in service file",
+      "subcategory": "type-safe-models",
+      "code_snippet": "export type LoadEvent = 'loading' | 'ready' | 'failed';",
+      "files": [
+        "src/app/core/services/scene-asset.service.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-06",
+      "description": "src/app/features/demo/ folder not yet created; will require creation following hero component organizational pattern (component.ts, component.html, component.scss, component.spec.ts)",
+      "id": "learn-038",
+      "category": "project-structure",
+      "keywords": [
+        "feature modules",
+        "demo",
+        "folder structure",
+        "organizational pattern",
+        "greenfield",
+        "component location"
+      ],
+      "pattern": "Demo feature folder does not yet exist",
+      "subcategory": "feature-module-organization",
+      "code_snippet": null,
+      "files": [
+        "src/app/features/demo/"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-06",
+      "description": "FusionStoreService.setLoadState() accepts object with 'status' field (LoadEvent: loading/ready/failed) and optional 'error' field for error messages",
+      "id": "learn-039",
+      "category": "code-patterns",
+      "keywords": [
+        "signals",
+        "state management",
+        "load state",
+        "status",
+        "error handling",
+        "state transitions",
+        "loading orchestration",
+        "setLoadState"
+      ],
+      "pattern": "State store uses setLoadState with status and optional error",
+      "subcategory": "signal-based-state-management",
+      "code_snippet": "setLoadState(state: { status: LoadEvent; error?: string }): void { this.state.update(s => ({ ...s, loadState: state })); }",
+      "files": [
+        "src/app/core/services/fusion-store.service.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "exploration_agent",
+      "context": "UOW-06",
+      "description": "Demo-shell component integration spec requirements: test deterministic loading orchestration with both success branch (loadingready) and failure branch (loadingfailed)",
+      "id": "learn-040",
+      "category": "testing",
+      "keywords": [
+        "integration testing",
+        "deterministic orchestration",
+        "loading states",
+        "success branch",
+        "failure branch",
+        "loading->ready",
+        "loading->failed",
+        "state transitions",
+        "test coverage"
+      ],
+      "pattern": "Integration specs must test both success and failure branches",
+      "subcategory": "integration-testing",
+      "code_snippet": null,
+      "files": []
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "software_engineer",
+      "context": "UOW-07",
+      "description": "ControlsPanelComponent and MetricsPanelComponent implemented as standalone Angular components in src/app/features/demo with file-based Vitest specs",
+      "id": "learn-041",
+      "category": "project-structure",
+      "keywords": [
+        "demo",
+        "features",
+        "components",
+        "standalone",
+        "angular",
+        "controls panel",
+        "metrics panel",
+        "feature modules",
+        "file-based tests",
+        "vitest"
+      ],
+      "pattern": "Standalone components in demo feature folder with file-based specs",
+      "subcategory": "feature-module-organization",
+      "code_snippet": null,
+      "files": [
+        "src/app/features/demo/controls-panel.component.ts",
+        "src/app/features/demo/controls-panel.component.html",
+        "src/app/features/demo/controls-panel.component.spec.ts",
+        "src/app/features/demo/metrics-panel.component.ts",
+        "src/app/features/demo/metrics-panel.component.html",
+        "src/app/features/demo/metrics-panel.component.spec.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "software_engineer",
+      "context": "UOW-07",
+      "description": "Controls template includes explicit radio options for all 4 fusion modes (single_agent, naive_fusion, vogs, ground_truth) and disables representation radios with [disabled]=\"isGroundTruthMode\" attribute binding",
+      "id": "learn-042",
+      "category": "code-patterns",
+      "keywords": [
+        "angular",
+        "template",
+        "radio buttons",
+        "fusion modes",
+        "attribute binding",
+        "disabled state",
+        "computed properties",
+        "UI controls",
+        "ground truth",
+        "representation mode"
+      ],
+      "pattern": "Explicit radio options with computed disabled binding",
+      "subcategory": "angular-template-binding",
+      "code_snippet": "<input type=\"radio\" name=\"representation\" value=\"occupancy\" [disabled]=\"isGroundTruthMode\" />",
+      "files": [
+        "src/app/features/demo/controls-panel.component.html"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "software_engineer",
+      "context": "UOW-07",
+      "description": "ControlsPanelComponent delegates mode changes to FusionStoreService; isGroundTruthMode getter derives UI state from fusionStore.fusionMode() signal",
+      "id": "learn-043",
+      "category": "code-patterns",
+      "keywords": [
+        "state delegation",
+        "service delegation",
+        "computed properties",
+        "getters",
+        "signals",
+        "UI state",
+        "FusionStoreService",
+        "mode changes",
+        "ground truth",
+        "state management"
+      ],
+      "pattern": "UI controls delegate state changes to services with computed property guards",
+      "subcategory": "component-state-delegation",
+      "code_snippet": "get isGroundTruthMode(): boolean { return this.fusionStore.fusionMode() === 'ground_truth'; }\nonFusionModeChange(mode: FusionMode): void { this.fusionStore.setFusionMode(mode); }",
+      "files": [
+        "src/app/features/demo/controls-panel.component.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "software_engineer",
+      "context": "UOW-07",
+      "description": "MetricsPanelComponent exposes METRIC_CONSTANTS.dashboard as dashboardMetrics property for template binding; does not use hero metrics",
+      "id": "learn-044",
+      "category": "code-patterns",
+      "keywords": [
+        "metrics",
+        "constants",
+        "METRIC_CONSTANTS",
+        "dashboard metrics",
+        "template binding",
+        "readonly",
+        "scoped metrics",
+        "metrics separation"
+      ],
+      "pattern": "Metrics panel binds to scoped METRIC_CONSTANTS subset",
+      "subcategory": "metrics-binding",
+      "code_snippet": "readonly dashboardMetrics = METRIC_CONSTANTS.dashboard;",
+      "files": [
+        "src/app/features/demo/metrics-panel.component.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "software_engineer",
+      "context": "UOW-07-revision-2",
+      "description": "Standalone Angular components use runtime DI via inject() function instead of constructor injection",
+      "id": "learn-045",
+      "category": "code-patterns",
+      "keywords": [
+        "angular",
+        "standalone",
+        "dependency injection",
+        "runtime DI",
+        "inject function",
+        "no constructor injection",
+        "DI pattern",
+        "component DI"
+      ],
+      "pattern": "Runtime DI via inject() for standalone components",
+      "subcategory": "angular-runtime-di",
+      "code_snippet": "private fusionStore = inject(FusionStoreService);",
+      "files": [
+        "src/app/features/demo/controls-panel.component.ts",
+        "src/app/features/demo/metrics-panel.component.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "software_engineer",
+      "context": "UOW-07-revision-2",
+      "description": "Component specs use TestBed.configureTestingModule() with ComponentFixture pattern for testing Angular components",
+      "id": "learn-046",
+      "category": "testing",
+      "keywords": [
+        "TestBed",
+        "ComponentFixture",
+        "component testing",
+        "angular testing",
+        "fixture",
+        "detectChanges",
+        "nativeElement",
+        "querySelector",
+        "vitest",
+        "spec pattern"
+      ],
+      "pattern": "TestBed-based component spec pattern with ComponentFixture",
+      "subcategory": "component-test-pattern",
+      "code_snippet": "TestBed.configureTestingModule({ imports: [ComponentClass] });\nfixture = TestBed.createComponent(ComponentClass);\ncomponent = fixture.componentInstance;\nfixture.detectChanges();",
+      "files": [
+        "src/app/features/demo/controls-panel.component.spec.ts",
+        "src/app/features/demo/metrics-panel.component.spec.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "software_engineer",
+      "context": "UOW-07-revision-2",
+      "description": "Component metadata styleUrls property must be an array, not a single string (e.g., styleUrls: ['./component.scss'])",
+      "id": "learn-047",
+      "category": "code-patterns",
+      "keywords": [
+        "angular",
+        "component metadata",
+        "styleUrls",
+        "array syntax",
+        "styles",
+        "scss",
+        "component decorator",
+        "metadata"
+      ],
+      "pattern": "styleUrls as array in component metadata",
+      "subcategory": "angular-component-metadata",
+      "code_snippet": "styleUrls: ['./controls-panel.component.scss']",
+      "files": [
+        "src/app/features/demo/controls-panel.component.ts",
+        "src/app/features/demo/metrics-panel.component.ts"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "discovered_by": "software_engineer",
+      "context": "UOW-07-revision-2",
+      "description": "Added jsdom devDependency to resolve Vitest default environment issues; allows tests to run without --environment node flag",
+      "id": "learn-048",
+      "category": "dependencies",
+      "keywords": [
+        "jsdom",
+        "vitest",
+        "test environment",
+        "devDependency",
+        "default environment",
+        "environment flag",
+        "testing setup"
+      ],
+      "pattern": "jsdom devDependency for Vitest default environment",
+      "subcategory": "vitest-jsdom-dependency",
+      "code_snippet": "\"jsdom\": \"^25.0.1\"",
+      "files": [
+        "package.json"
+      ]
+    },
+    {
+      "date": "2025-02-15",
+      "files": [
+        "src/app/core/services/scene-asset.service.ts"
+      ],
+      "id": "learn-049",
+      "keywords": [
+        "retry",
+        "SceneAssetService",
+        "retryLast",
+        "Observable",
+        "LoadEvent",
+        "error recovery",
+        "retry API"
+      ],
+      "category": "code-patterns",
+      "discovered_by": "software_engineer",
+      "pattern": "SceneAssetService.retryLast() returns Observable<LoadEvent>",
+      "subcategory": "service-retry-api",
+      "description": "SceneAssetService exposes retryLast(): Observable<LoadEvent> for retry functionality in error overlay",
+      "code_snippet": "retryLast(): Observable<LoadEvent>",
+      "context": "UOW-08-exploration"
+    },
+    {
+      "date": "2025-02-15",
+      "files": [],
+      "id": "learn-050",
+      "keywords": [
+        "focus trap",
+        "accessibility",
+        "a11y",
+        "error overlay",
+        "keyboard navigation",
+        "no @angular/cdk",
+        "custom implementation"
+      ],
+      "category": "project-structure",
+      "discovered_by": "software_engineer",
+      "pattern": "Custom focus trap implementation required (no cdkTrapFocus)",
+      "subcategory": "focus-trap-implementation",
+      "description": "No existing focus trap implementation; no @angular/cdk dependency; custom focus trap needed for error overlay",
+      "code_snippet": "",
+      "context": "UOW-08-exploration"
+    },
+    {
+      "date": "2025-02-15",
+      "files": [
+        "src/app/features/demo/demo-shell.component.ts",
+        "src/app/features/demo/controls-panel.component.ts",
+        "src/app/features/demo/metrics-panel.component.spec.ts"
+      ],
+      "id": "learn-051",
+      "keywords": [
+        "demo",
+        "feature module",
+        "features folder",
+        "component location",
+        "demo-shell",
+        "controls-panel",
+        "metrics-panel"
+      ],
+      "category": "project-structure",
+      "discovered_by": "software_engineer",
+      "pattern": "Features organized under src/app/features/{feature-name}/",
+      "subcategory": "feature-module-organization",
+      "description": "Demo feature module location at src/app/features/demo/ with standalone components and Vitest+TestBed patterns",
+      "code_snippet": "// Feature location pattern: src/app/features/{feature-name}/",
+      "context": "UOW-08-exploration"
+    },
+    {
+      "date": "2025-02-15",
+      "files": [
+        "src/app/features/demo/metrics-panel.component.spec.ts"
+      ],
+      "id": "learn-052",
+      "keywords": [
+        "component testing",
+        "TestBed",
+        "ComponentFixture",
+        "class-level assertions",
+        "BrowserTestingModule",
+        "Vitest",
+        "component instance"
+      ],
+      "category": "testing",
+      "discovered_by": "software_engineer",
+      "pattern": "TestBed.configureTestingModule + ComponentFixture for component tests with class-level assertions",
+      "subcategory": "component-test-pattern",
+      "description": "Component tests use TestBed + BrowserTestingModule in Vitest with class-level assertions via component instance",
+      "code_snippet": "TestBed.configureTestingModule({ imports: [ComponentName] });\\nfixture = TestBed.createComponent(ComponentName);\\ncomponent = fixture.componentInstance;\\nexpect(component.someProperty).toBe(value);",
+      "context": "UOW-08-exploration"
+    },
+    {
+      "id": "learn-053",
+      "context": "UOW-10-type-safety-fixes",
+      "keywords": [
+        "type safety",
+        "strict TypeScript",
+        "type narrowing",
+        "unknown type",
+        "Record type",
+        "spy typing",
+        "mock.calls",
+        "tuple types",
+        "diagnostics service",
+        "sanitize pattern",
+        "test type safety"
+      ],
+      "category": "code-patterns",
+      "subcategory": "typescript-strict-type-narrowing",
+      "discovered_by": "software_engineer",
+      "pattern": "Two-step type narrowing (unknown -> Record<string, unknown>) and typed spy targets with tuple args",
+      "files": [
+        "src/app/core/services/diagnostics.service.ts",
+        "src/app/core/services/diagnostics.service.spec.ts"
+      ],
+      "description": "Type-safe event sanitization and mock spy typing patterns for strict TypeScript compliance",
+      "code_snippet": "// Service: event via unknown->Record<string, unknown>\\nconst eventRecord = event as unknown as Record<string, unknown>;\\n// Test: typed spy with tuple args\\nconst writeSpy = vi.spyOn(target as { write: (...args: [string]) => void }, 'write');\\nexpect(writeSpy.mock.calls[0][0]).toContain('expected');",
+      "date": "2026-02-15"
+    },
+    {
+      "id": "learn-qa-001",
+      "context": "Change 001 Attempt #2 post-remediation",
+      "subcategory": "full-gate-validation",
+      "code_snippet": "Gate validation: npm run lint && npm run test && npm run check && npm run build && npm run e2e",
+      "discovered_by": "qa_agent",
+      "category": "qa-validation",
+      "keywords": [
+        "qa",
+        "validation",
+        "gate",
+        "e2e",
+        "lint",
+        "test",
+        "build",
+        "acceptance-criteria",
+        "branding"
+      ],
+      "description": "Post-remediation full gate execution succeeded: lint, test, build, e2e, check all exit 0. E2E runs 6 tests with explicit assertions for AC2/AC3 (single_agent hides occluded vehicle, VOGS reveals it). Branding tokens present in SCSS using Purdue black/gold variables.",
+      "files": [
+        "e2e/demo-flow.spec.ts",
+        "src/app/features/hero/hero-section.component.scss",
+        "src/app/features/demo/controls-panel.component.scss",
+        "src/app/features/demo/metrics-panel.component.scss"
+      ],
+      "date": "2026-02-15",
+      "pattern": "Full gate validation pattern: gate summary JSON + console logs + targeted source assertions to map AC without browser runtime"
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    {
+      "category": "ui-ux-standards",
+      "id": "learn-054",
+      "keywords": "purdue branding tokenized styling borderColor rgb(207,185,145) hero controls metrics",
+      "pattern": "Purdue black/gold tokenized styling",
+      "code_snippet": "borderColor: rgb(207,185,145) // Applied to .hero-button, .control-group, .metric-card",
+      "description": "Hero/controls/metrics components consistently use Purdue black/gold tokenized styling with borderColor rgb(207,185,145)",
+      "subcategory": "component-styling",
+      "context": "Change 001 - UI standards baseline",
+      "date": "2026-02-15",
+      "files": "hero-section.component.scss, control-group.component.scss, metric-card.component.scss",
+      "discovered_by": "ui_qa_agent"
+    },
+    {
+      "category": "ui-ux-standards",
+      "id": "learn-055",
+      "keywords": "view demo focus transition demo-section INT-002 e2e harness behavior",
+      "pattern": "Focus transition on View Demo click",
+      "code_snippet": null,
+      "description": "View Demo button click should focus #demo-section per e2e contract, but live app does not implement this (INT-002 fail)",
+      "subcategory": "component-behavior",
+      "context": "Change 001 - Behavior discrepancy",
+      "date": "2026-02-15",
+      "files": "hero-section.component.ts, demo-flow.spec.ts",
+      "discovered_by": "ui_qa_agent"
+    },
+    {
+      "category": "code-patterns",
+      "id": "learn-056",
+      "keywords": "styleUrls styleUrl component metadata angular consistency",
+      "pattern": "styleUrls array is project standard",
+      "code_snippet": "// Standard: styleUrls: ['./component.scss'] // Non-standard: styleUrl: './component.scss'",
+      "description": "Project standard is styleUrls array. hero-section.component.ts uses styleUrl string (inconsistent), while controls/metrics use styleUrls array (standard).",
+      "subcategory": "angular-component-metadata",
+      "context": "Change 001 - Style consistency",
+      "date": "2026-02-15",
+      "files": "hero-section.component.ts, control-group.component.ts, metric-card.component.ts",
+      "discovered_by": "ui_qa_agent"
+    },
+    {
+      "category": "testing-patterns",
+      "id": "learn-057",
+      "keywords": "live app render e2e harness playwright traces greenfield baseline ui standards",
+      "pattern": "Live app render + e2e harness for UI baseline",
+      "code_snippet": null,
+      "description": "Live app render captures combined with e2e harness traces provide complete baseline for greenfield UI/UX standards when components aren't yet mounted in production routes",
+      "subcategory": "ui-baseline-validation",
+      "context": "Change 001 - Greenfield UI standards",
+      "date": "2026-02-15",
+      "files": "orchestrated-agent-work/001/qa/ui_qa_report.yaml, orchestrated-agent-work/001/qa/evidence/ui/*",
+      "discovered_by": "ui_qa_agent"
+    },
+    {
+      "keywords": "styleUrls array pattern hero-section focus management error-overlay dialog states tab-trap validation",
+      "category": "ui-ux-standards",
+      "files": "hero-section.component.ts, hero-section.component.html, error-overlay.component.ts",
+      "pattern": "Angular component styleUrls array pattern verification",
+      "context": "Change 001 - UI/component standards verification (Attempt 2)",
+      "date": "2026-02-15",
+      "subcategory": "component-styling-verification",
+      "code_snippet": "styleUrls: ['./hero-section.component.scss'] // Correct array pattern, aligns with controls/metrics",
+      "id": "learn-058",
+      "discovered_by": "ui_qa_agent",
+      "description": "Verification of corrected implementations: hero-section.component.ts now uses styleUrls array, View Demo button correctly focuses #demo-section, error overlay dialog states (visible/focus/tab-trap/retry-hide) validated using same-type baseline comparisons"
+    }
+  ]
+}

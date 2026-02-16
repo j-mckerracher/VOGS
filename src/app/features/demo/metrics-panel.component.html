@@ -1,0 +1,20 @@
+<section class="metrics-panel" aria-labelledby="metrics-panel-title">
+  <h2 id="metrics-panel-title">Dashboard Metrics</h2>
+
+  <div class="metric-grid">
+    <article class="metric-card">
+      <h3 class="metric-label">mIoU Improvement</h3>
+      <p class="metric-value">+{{ dashboardMetrics.improvementMiou }}</p>
+    </article>
+
+    <article class="metric-card">
+      <h3 class="metric-label">Bandwidth Usage</h3>
+      <p class="metric-value">
+        ~{{ dashboardMetrics.bandwidthReductionPercent }}%
+        @if (dashboardMetrics.bandwidthReductionApproximate) {
+          <span class="approximate-label">approx</span>
+        }
+      </p>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-02-16T00:00:00.000Z",
+  "scenes": [
+    {
+      "sceneId": "002",
+      "displayName": "Blind T-Intersection",
+      "defaultFusionMode": "vogs",
+      "defaultRepresentationMode": "occupancy",
+      "totalFrames": 199,
+      "cameraCount": 5,
+      "assets": [
+        {
+          "id": "002-timestamps",
+          "url": "https://d3msd1uq322nhw.cloudfront.net/002/timestamps.json",
+          "sizeBytes": 40960
+        },
+        {
+          "id": "002-track-info",
+          "url": "https://d3msd1uq322nhw.cloudfront.net/002/track/track_camera_vis.json",
+          "sizeBytes": 58492
+        },
+        {
+          "id": "002-track-ids",
+          "url": "https://d3msd1uq322nhw.cloudfront.net/002/track/track_ids.json",
+          "sizeBytes": 1656
+        }
+      ]
+    }
+  ]
+}

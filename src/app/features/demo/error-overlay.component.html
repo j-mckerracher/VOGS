@@ -1,0 +1,15 @@
+@if (open()) {
+  <section
+    #overlayRoot
+    class="error-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="error-overlay-title"
+    tabindex="-1"
+    (keydown)="onOverlayKeydown($event)"
+  >
+    <h2 id="error-overlay-title">Scene Load Error</h2>
+    <p>{{ message }}</p>
+    <button type="button" (click)="onRetryClick()">Retry</button>
+  </section>
+}

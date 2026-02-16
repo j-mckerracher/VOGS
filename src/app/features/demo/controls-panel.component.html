@@ -1,0 +1,73 @@
+<section class="controls-panel" aria-labelledby="controls-panel-title">
+  <h2 id="controls-panel-title">Controls</h2>
+
+  <fieldset class="control-group" aria-label="Fusion mode">
+    <legend>Fusion Mode</legend>
+
+    <label>
+      <input
+        type="radio"
+        name="fusion-mode"
+        [checked]="fusionMode() === 'single_agent'"
+        (change)="onFusionModeChange('single_agent')"
+      />
+      Single Agent
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="fusion-mode"
+        [checked]="fusionMode() === 'naive_fusion'"
+        (change)="onFusionModeChange('naive_fusion')"
+      />
+      Naive Fusion
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="fusion-mode"
+        [checked]="fusionMode() === 'vogs'"
+        (change)="onFusionModeChange('vogs')"
+      />
+      VOGS
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="fusion-mode"
+        [checked]="fusionMode() === 'ground_truth'"
+        (change)="onFusionModeChange('ground_truth')"
+      />
+      Ground Truth
+    </label>
+  </fieldset>
+
+  <fieldset class="control-group" aria-label="Representation mode">
+    <legend>Representation</legend>
+
+    <label>
+      <input
+        type="radio"
+        name="representation-mode"
+        [checked]="representationMode() === 'occupancy'"
+        [disabled]="isGroundTruthMode"
+        (change)="onRepresentationModeChange('occupancy')"
+      />
+      Occupancy
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="representation-mode"
+        [checked]="representationMode() === 'gaussian'"
+        [disabled]="isGroundTruthMode"
+        (change)="onRepresentationModeChange('gaussian')"
+      />
+      Gaussian
+    </label>
+  </fieldset>
+</section>

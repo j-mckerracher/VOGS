@@ -1,0 +1,47 @@
+{
+  "scenarios": {
+    "success": {
+      "initialState": "idle",
+      "primaryOutcome": {
+        "type": "ready",
+        "payload": {
+          "sceneId": "fixture-scene-001",
+          "assetUrl": "https://example.test/scene-001.splat"
+        }
+      },
+      "retryOutcome": {
+        "type": "ready",
+        "payload": {
+          "sceneId": "fixture-scene-001",
+          "assetUrl": "https://example.test/scene-001.splat"
+        }
+      }
+    },
+    "failureThenRetrySuccess": {
+      "initialState": "idle",
+      "primaryOutcome": {
+        "type": "failed",
+        "error": {
+          "code": "ASSET_FETCH_ERROR",
+          "message": "asset fetch failed"
+        }
+      },
+      "retryOutcome": {
+        "type": "ready",
+        "payload": {
+          "sceneId": "fixture-scene-001",
+          "assetUrl": "https://example.test/scene-001.splat"
+        }
+      }
+    }
+  },
+  "accessibility": {
+    "dialogMessage": "Unable to retrieve 3D scene data. Please check your connection or try again later.",
+    "contrast": {
+      "overlayBackground": "#111827",
+      "overlayText": "#F9FAFB",
+      "buttonBackground": "#1D4ED8",
+      "buttonText": "#FFFFFF"
+    }
+  }
+}
