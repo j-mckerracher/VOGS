@@ -5,6 +5,8 @@ import { beforeEach, describe, expect, it } from "vitest";
 import "zone.js";
 import { METRIC_CONSTANTS } from "../../core/config/metrics.constants";
 import { MetricsPanelComponent } from "./metrics-panel.component";
+import { TrackVisibilityService } from "../../core/services/track-visibility.service";
+import { FusionStoreService } from "../../core/services/fusion-store.service";
 
 let angularTestEnvironmentInitialized = false;
 
@@ -33,7 +35,9 @@ describe("MetricsPanelComponent", () => {
   beforeEach(() => {
     ensureAngularTestEnvironment();
     TestBed.configureTestingModule({});
-    component = TestBed.runInInjectionContext(() => new MetricsPanelComponent());
+    const tv = TestBed.inject(TrackVisibilityService);
+    const fs = TestBed.inject(FusionStoreService);
+    component = new MetricsPanelComponent(tv, fs);
   });
 
   it("uses canonical dashboard metrics while hero metric remains separate", () => {
