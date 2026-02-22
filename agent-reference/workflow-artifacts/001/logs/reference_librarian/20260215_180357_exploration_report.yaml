@@ -1,0 +1,66 @@
+log_type: "reference_librarian"
+timestamp: "2026-02-15T18:03:57Z"
+session_id: "rl-uow11-001"
+requesting_agent: "software_engineer"
+query: "EXPLORATION_REPORT: Context for UOW-11 (asset budget checks, manifest validation, package script wiring)"
+response_summary:
+  confidence: "full"
+  source_files_used: []
+  requires_exploration: false
+  exploration_delegated: false
+knowledge_updates:
+  added_to_accumulated_knowledge: true
+  added_to_learnings_json: true
+  updated_information_index: true
+  added_to_standing_questions: false
+processing_notes: |
+  Agent reported exploration findings for UOW-11. Added comprehensive knowledge about:
+  1. Asset budget validation script (scripts/check-asset-budget.mjs) with 2M byte threshold
+  2. Manifest contract validation script (scripts/validate-manifest.mjs) for required fields
+  3. SCENE_MANIFEST_PATH environment variable override pattern for test fixtures
+  4. process.exitCode=1 exit pattern for CI/CD integration
+  5. npm script quality gate chain integration (check:asset-budget, check:manifest-contract)
+  
+  Knowledge entries created:
+  - learn-031: Asset budget validation with environment-based fixture override
+  - learn-032: Manifest contract validation with required fields and value constraints
+  - learn-033: Non-throwing validation exit with process.exitCode for CI/CD integration
+  - learn-034: Environment variable-based fixture path override for validation testing
+  - learn-035: Chained npm script quality gates for comprehensive validation
+  
+  Updated information-index.json:
+  - Extended verification-scripts category with asset-budget-validation and manifest-contract-validation subcategories
+  - Extended code-patterns category with validation-exit-code-pattern subcategory
+  - Extended workspace-setup category with npm-script-quality-gates subcategory
+  - Extended testing category with environment-fixture-override subcategory
+  - Added keyword mappings for: asset budget, ASSET_BUDGET_ERROR, scene size, exit code, process.exitCode,
+    SCENE_MANIFEST_PATH, fixture override, manifest, contract validation, schema validation, required fields,
+    fusion modes, representation modes, field paths, validation errors, non-zero exit, graceful shutdown,
+    fail fast, npm script chains, quality gate, CI/CD, validation chain, script composition
+  - Updated retrieval patterns by file, keyword, and context for UOW-11
+  - Recorded schema change: added 5 new subcategories across 4 categories
+
+findings_summary:
+  file_paths:
+    - "scripts/check-asset-budget.mjs"
+    - "scripts/validate-manifest.mjs"
+    - "scripts/check-asset-budget.spec.mjs"
+    - "src/assets/manifests/scene-manifest.json"
+    - "package.json"
+  code_patterns:
+    - "SCENE_MANIFEST_PATH environment variable for fixture override"
+    - "process.exitCode=1 for validation failures (non-throwing pattern)"
+    - "SCENE_ASSET_BUDGET_BYTES = 2_000_000 threshold"
+    - "ASSET_BUDGET_ERROR output for oversized scenes"
+    - "Manifest contract validation: version, generatedAt, scenes[], sceneId, displayName, defaultFusionMode, defaultRepresentationMode, assets[]"
+    - "Allowed values: FUSION_MODES = ['single_agent', 'naive_fusion', 'vogs', 'ground_truth']"
+    - "Allowed values: REPRESENTATION_MODES = ['occupancy', 'gaussian']"
+    - "npm script integration: check:asset-budget, check:manifest-contract"
+    - "Quality gate chain: lint && test && check:asset-budget && check:manifest-contract && check:hero"
+  categories_introduced:
+    - "verification-scripts/asset-budget-validation"
+    - "verification-scripts/manifest-contract-validation"
+    - "code-patterns/validation-exit-code-pattern"
+    - "workspace-setup/npm-script-quality-gates"
+    - "testing/environment-fixture-override"
+duration_estimate: "5s"

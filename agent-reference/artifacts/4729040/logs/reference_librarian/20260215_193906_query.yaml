@@ -1,0 +1,23 @@
+log_type: "reference_librarian"
+timestamp: "2026-02-15T19:39:06Z"
+session_id: "rl-4729040-001"
+requesting_agent: "software_engineer"
+query: "EXPLORATION_REPORT: UOW-12 implementation patterns for AC flow, accessibility, and ground_truth behavior"
+response_summary:
+  confidence: "full"
+  source_files_used: []
+  requires_exploration: false
+  exploration_delegated: false
+knowledge_updates:
+  added_to_accumulated_knowledge: true
+  added_to_learnings_json: true
+  updated_information_index: true
+  added_to_standing_questions: false
+processing_notes: "Agent reported findings from UOW-12 exploration. Added Playwright/vitest guard pattern, state transition patterns, error overlay accessibility (dialog role, aria-modal, focus trap, focus restore), ground_truth mode control disabling, and Playwright accessibility testing approach (no axe dependency). Added two new categories to information index: 'accessibility' and 'feature-behavior'."
+duration_estimate: "5s"
+findings_summary:
+  - playwright_vitest_guard: "if (typeof vitestMarker === 'undefined') { test(...) }"
+  - state_transitions: "loadingready and loadingfailed"
+  - error_overlay_accessibility: "role=dialog, aria-modal=true, focus trap and restore"
+  - ground_truth_mode: "representation radios disabled when isGroundTruthMode"
+  - accessibility_testing: "Built-in Playwright assertions only (no axe)"

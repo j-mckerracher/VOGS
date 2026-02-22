@@ -1,0 +1,47 @@
+log_type: "reference_librarian"
+timestamp: "2025-02-15T18:15:38Z"
+session_id: "rl-001-uow06-exploration-findings"
+requesting_agent: "software_engineer"
+query: "EXPLORATION_REPORT: UOW-06 implementation patterns and file locations"
+response_summary:
+  confidence: "full"
+  source_files_used: []
+  requires_exploration: false
+  exploration_delegated: false
+knowledge_updates:
+  added_to_accumulated_knowledge: true
+  added_to_learnings_json: true
+  updated_information_index: true
+  added_to_standing_questions: false
+processing_notes: |
+  Software engineer reported exploration findings for UOW-06 implementation patterns.
+  Findings covered:
+  - Service test pattern: direct class instantiation without TestBed
+  - LoadEvent types: defined inline in scene-asset.service.ts
+  - Demo feature folder: does not yet exist, requires creation
+  - State store pattern: setLoadState({status, error}) for load state transitions
+  - Integration spec requirements: test both success (loading->ready) and failure (loading->failed) branches
+  
+  Added comprehensive entry to accumulated-knowledge.md with implementation details and code examples.
+  Created 5 new learning entries (learn-036 through learn-040) covering:
+  - learn-036: Service test pattern without TestBed
+  - learn-037: Inline LoadEvent type definitions
+  - learn-038: Demo feature folder greenfield status
+  - learn-039: State store setLoadState pattern
+  - learn-040: Integration testing requirements for orchestration
+  
+  Updated information-index.json:
+  - Extended testing category with integration-testing subcategory
+  - Added keywords: service tests, class instantiation, no TestBed, inline types, LoadEvent, demo, folder structure, load state, setLoadState, deterministic orchestration, success/failure branches
+  - Updated retrieval patterns for service files and demo folder
+  - Added UOW-06 context mapping
+  - Added schema change entry for 2025-02-15
+  
+  All knowledge successfully captured and indexed for future retrieval.
+duration_estimate: "2 minutes"
+new_learning_ids:
+  - "learn-036"
+  - "learn-037"
+  - "learn-038"
+  - "learn-039"
+  - "learn-040"

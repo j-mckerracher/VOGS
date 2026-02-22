@@ -1,0 +1,26 @@
+log_type: "reference_librarian"
+timestamp: "2026-02-15T16:25:11Z"
+session_id: "rl-001-uow03-001"
+requesting_agent: "user"
+query: "Need information for UOW-03 implementation: 1) fusion store file locations, 2) API/selector/signal patterns, 3) prior learnings for change 001, 4) store guard documentation"
+response_summary:
+  confidence: "partial"
+  source_files_used: 
+    - "accumulated-knowledge.md"
+    - "learnings.json"
+    - "information-index.json"
+  requires_exploration: true
+  exploration_delegated: true
+knowledge_updates:
+  added_to_accumulated_knowledge: false
+  added_to_learnings_json: false
+  updated_information_index: false
+  added_to_standing_questions: true
+processing_notes: |
+  Found prior knowledge from UOW-02 about model patterns and TypeScript conventions.
+  No UOW-03 planning documentation exists in codebase yet.
+  No existing store/service/signal patterns found - this is greenfield state management.
+  Delegated codebase exploration to discover Angular version, dependencies, and existing patterns.
+  Angular 18.2.0 with RxJS 7.8.1 installed but no state management library.
+  Added question to standing-questions.md about UOW-03 planning documentation location.
+duration_estimate: "45s"

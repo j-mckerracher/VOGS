@@ -1,0 +1,26 @@
+{
+  "log_type": "reference_librarian",
+  "timestamp": "2026-02-15T16:36:09Z",
+  "session_id": "rl-001-uow04-001",
+  "requesting_agent": "human_user",
+  "query": "Need to implement UOW-04 for change_id 001. Requesting: 1) Relevant project knowledge for scene asset service, asset error classes, and specs. 2) Exact file locations. 3) Prior learnings on timeout/retry, LoadEvent valid types, error taxonomy (fetch/parse/budget). 4) Exploration guidance.",
+  "response_summary": {
+    "confidence": "none",
+    "source_files_used": [
+      "accumulated-knowledge.md",
+      "learnings.json",
+      "information-index.json",
+      "standing-questions.md"
+    ],
+    "requires_exploration": true,
+    "exploration_delegated": true
+  },
+  "knowledge_updates": {
+    "added_to_accumulated_knowledge": false,
+    "added_to_learnings_json": false,
+    "updated_information_index": false,
+    "added_to_standing_questions": true
+  },
+  "processing_notes": "No existing knowledge on UOW-04, SceneAssetService, LoadEvent, or AssetError classes. No planning documentation found. Grep searches for 'scene.*asset.*service', 'LoadEvent', 'AssetError', and 'UOW-04' returned no results. Need exploration to find planning docs (PRD, micro-level plan) or codebase artifacts. Added standing question Q-003 for UOW-04 planning documentation location.",
+  "duration_estimate": "15s"
+}

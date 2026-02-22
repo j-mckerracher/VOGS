@@ -1,0 +1,26 @@
+log_type: "reference_librarian"
+timestamp: "2026-02-15T21:32:12Z"
+session_id: "rl-001-ui-qa-verification"
+requesting_agent: "ui_qa_agent"
+query: "EXPLORATION_REPORT: UI/component styling standards and pitfalls for change 001 (verification)"
+response_summary:
+  confidence: "full"
+  source_files_used: []
+  requires_exploration: false
+  exploration_delegated: false
+knowledge_updates:
+  added_to_accumulated_knowledge: true
+  added_to_learnings_json: true
+  updated_information_index: false
+  added_to_standing_questions: false
+processing_notes: |
+  UI QA Agent reported verification findings after initial discrepancies were corrected.
+  Key findings:
+  - hero-section.component.ts now uses styleUrls array (corrected from styleUrl string)
+  - View Demo button correctly focuses #demo-section (INT-002 resolution)
+  - Error overlay dialog states validated (UI-004: visible/focus/tab-trap/retry-hide)
+  - QA methodology uses same-type baseline comparisons for accurate validation
+  
+  Added comprehensive verification entry to accumulated-knowledge.md and structured 
+  learning (learn-058) to learnings.json under ui-ux-standards category.
+duration_estimate: "4s"

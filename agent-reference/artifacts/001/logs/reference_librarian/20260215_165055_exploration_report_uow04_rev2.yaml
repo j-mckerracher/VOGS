@@ -1,0 +1,28 @@
+log_type: "reference_librarian"
+timestamp: "2025-01-30T16:50:55Z"
+session_id: "rl-uow04-rev2-001"
+requesting_agent: "software_engineer"
+query: "EXPLORATION_REPORT: UOW-04 revision attempt #2 strict TypeScript tuple includes and return narrowing fixes"
+response_summary:
+  confidence: "full"
+  source_files_used: []
+  requires_exploration: false
+  exploration_delegated: false
+knowledge_updates:
+  added_to_accumulated_knowledge: true
+  added_to_learnings_json: true
+  updated_information_index: true
+  added_to_standing_questions: false
+processing_notes: |
+  Agent reported findings from UOW-04 revision attempt #2. Added TypeScript strict type narrowing 
+  pattern to accumulated-knowledge.md (section on tuple includes widening and explicit casting after 
+  guards). Created learn-016 in learnings.json with comprehensive keywords for retrieval. Updated 
+  information-index.json with new subcategory 'typescript-strict-type-narrowing' under code-patterns 
+  category, added new keywords (type narrowing, type widening, tuple, includes, type guard, casting), 
+  updated file/keyword/context retrieval patterns, and recorded schema change.
+  
+  Key pattern discovered: Strict TypeScript requires (CONST as readonly string[]).includes(value) 
+  for tuple includes checks and explicit casting (return value as NarrowType) after guard validation.
+  
+  Verification results: npx tsc --noEmit pass, npm run lint pass, vitest --environment node pass 4/4.
+duration_estimate: "8s"

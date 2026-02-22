@@ -599,6 +599,7 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
     // Check if fusion mode changed
     if (this.fusionStore.fusionMode() !== this.currentFusionMode) {
       this.updateTrackVisibility();
+      this.cdr.detectChanges();
     }
     if (this.renderer && this.scene && this.camera) {
       this.renderer.render(this.scene, this.camera);

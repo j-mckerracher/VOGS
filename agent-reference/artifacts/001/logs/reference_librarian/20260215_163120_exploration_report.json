@@ -1,0 +1,62 @@
+{
+  "log_type": "reference_librarian",
+  "timestamp": "2026-02-15T16:31:20Z",
+  "session_id": "rl-001-uow03-report",
+  "requesting_agent": "software_engineer",
+  "query": "EXPLORATION_REPORT: UOW-03 implementation patterns and file locations",
+  "response_summary": {
+    "confidence": "full",
+    "source_files_used": [],
+    "requires_exploration": false,
+    "exploration_delegated": false
+  },
+  "knowledge_updates": {
+    "added_to_accumulated_knowledge": true,
+    "added_to_learnings_json": true,
+    "updated_information_index": true,
+    "added_to_standing_questions": false
+  },
+  "processing_notes": "Received exploration findings report for UOW-03. Added comprehensive knowledge about signal-based state management with FusionStoreService including: (1) Angular signals pattern with private writable signal and readonly computed selectors (learn-008), (2) Vitest environment configuration issue requiring --environment node flag (learn-009), (3) Business rule enforcement via early-return guard pattern (learn-010), (4) Service organization with co-located test files (learn-011). Extended information-index.json taxonomy with new subcategories for signal-based-state-management, business-rule-enforcement, service-organization, and vitest-environment-configuration. Added new 'testing' category to support future test-related queries.",
+  "findings_summary": {
+    "files_documented": [
+      "src/app/core/models/fusion-state.model.ts",
+      "src/app/core/services/fusion-store.service.ts",
+      "src/app/core/services/fusion-store.service.spec.ts"
+    ],
+    "patterns_captured": [
+      "Signal-based state management with private signal + readonly computed",
+      "Business rule enforcement via early-return guards",
+      "Service co-location with spec files",
+      "Vitest environment configuration workaround"
+    ],
+    "learnings_added": [
+      "learn-008: Angular signals state management pattern",
+      "learn-009: Vitest environment configuration",
+      "learn-010: Business rule read-only guard pattern",
+      "learn-011: Service organization structure"
+    ],
+    "taxonomy_changes": {
+      "new_category": "testing",
+      "new_subcategories": [
+        "signal-based-state-management",
+        "business-rule-enforcement",
+        "service-organization",
+        "vitest-environment-configuration"
+      ],
+      "new_keywords": [
+        "signals",
+        "state management",
+        "computed",
+        "reactive",
+        "business rules",
+        "early return",
+        "guard clause",
+        "vitest",
+        "test environment",
+        "jsdom",
+        "node environment"
+      ]
+    }
+  },
+  "duration_estimate": "45s"
+}
