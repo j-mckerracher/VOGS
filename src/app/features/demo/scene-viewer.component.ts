@@ -1,8 +1,9 @@
 import {
   Component,
-  viewChild,
-  ChangeDetectorRef
+  viewChild
 } from "@angular/core";
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports -- Angular DI needs runtime token
+import { ChangeDetectorRef } from "@angular/core";
 import type { ElementRef, OnDestroy, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import {
@@ -26,6 +27,7 @@ import {
   DoubleSide,
   ConeGeometry,
   Group,
+  SphereGeometry,
   type Texture
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
@@ -278,6 +280,12 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
   private egoMesh: Mesh | null = null;
   private egoGroup: Group | null = null;
   private sceneDataCache: SceneData | null = null;
+  /** trackId → { mesh, worldX, worldZ } for each tracked object in the scene */
+  private trackMeshes = new Map<number, { mesh: Mesh; worldX: number; worldZ: number }>();
+  /** Shared geometry/materials for track markers */
+  private trackGeoDetected: SphereGeometry | null = null;
+  private trackMatDetected: MeshLambertMaterial | null = null;
+  private trackMatOccluded: MeshLambertMaterial | null = null;
 
   constructor(
     // eslint-disable-next-line no-unused-vars -- Angular DI constructor parameter property
@@ -374,7 +382,7 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
       this.cdr.detectChanges();
 
       // Wait one microtask so Angular can create the canvas element
-      await new Promise<void>((resolve) => { setTimeout(resolve, 0); });
+      await new Promise<void>((resolve) => { globalThis.setTimeout(resolve, 0); });
 
       this.initThreeJs(sceneData);
       this.setFrame(0);
@@ -454,6 +462,9 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
     // Camera frustum cones
     this.buildCameraFrustums(sceneData.cameraCalibrations);
 
+    // Tracked objects (other vehicles / pedestrians) — synthesized from visibility data
+    this.buildTrackObjects(sceneData);
+
     // Front camera billboard (floating above the scene)
     const imgPlaneGeo = new PlaneGeometry(20, 11.25);
     const imgPlaneMat = new MeshBasicMaterial({ color: 0x222222, side: DoubleSide });
@@ -530,6 +541,94 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Synthesize world-space positions for tracked objects and create 3D meshes.
+   * Since the dataset has no 3D bounding boxes, positions are estimated from
+   * camera visibility data: for each track we find the median frame where it's
+   * visible, take the ego pose at that frame, and project outward along the
+   * average camera direction at a deterministic distance.
+   */
+  private buildTrackObjects(sceneData: SceneData): void {
+    if (!this.scene) return;
+
+    const TRACK_MARKER_RADIUS = 1.2;
+    const MIN_DISTANCE = 8;
+    const MAX_DISTANCE = 35;
+
+    this.trackGeoDetected = new SphereGeometry(TRACK_MARKER_RADIUS, 12, 8);
+    this.trackMatDetected = new MeshLambertMaterial({ color: COLORS.detected });
+    this.trackMatOccluded = new MeshLambertMaterial({
+      color: COLORS.occluded,
+      transparent: true,
+      opacity: 0.45
+    });
+
+    const cals = sceneData.cameraCalibrations;
+    const poses = sceneData.egoPoses;
+    const vis = sceneData.trackCameraVis;
+    let placed = 0;
+
+    for (const trackId of sceneData.trackIds) {
+      const frameMap = vis[String(trackId)];
+      if (!frameMap) continue;
+
+      // Collect all frames where this track is visible and their cameras
+      const visibleFrames: { frame: number; cameras: number[] }[] = [];
+      for (const [fStr, cams] of Object.entries(frameMap)) {
+        if (cams.length > 0) visibleFrames.push({ frame: Number(fStr), cameras: cams });
+      }
+      if (visibleFrames.length === 0) continue;
+
+      // Use median visible frame for a stable reference position
+      visibleFrames.sort((a, b) => a.frame - b.frame);
+      const medianEntry = visibleFrames[Math.floor(visibleFrames.length / 2)];
+      const refFrame = medianEntry.frame;
+      const pose = poses[refFrame];
+      if (!pose) continue;
+
+      // Average camera direction (in vehicle frame) across the cameras that see this track
+      let avgDirX = 0, avgDirY = 0;
+      for (const camIdx of medianEntry.cameras) {
+        const cal = cals[camIdx];
+        if (cal) { avgDirX += cal.dirX; avgDirY += cal.dirY; }
+      }
+      const dirLen = Math.sqrt(avgDirX * avgDirX + avgDirY * avgDirY);
+      if (dirLen < 0.001) continue;
+      avgDirX /= dirLen;
+      avgDirY /= dirLen;
+
+      // Deterministic distance based on track ID (spread objects at varying distances)
+      const hash = ((trackId * 13 + 7) % 100) / 100;
+      const distance = MIN_DISTANCE + hash * (MAX_DISTANCE - MIN_DISTANCE);
+
+      // Small lateral jitter so objects in the same sector don't overlap
+      const lateralJitter = (((trackId * 31 + 11) % 100) / 100 - 0.5) * 8;
+      const perpX = -avgDirY;
+      const perpY = avgDirX;
+
+      // Transform camera-frame direction to world frame using ego heading
+      const cosH = Math.cos(pose.heading);
+      const sinH = Math.sin(pose.heading);
+      const worldDirX = avgDirX * cosH - avgDirY * sinH;
+      const worldDirZ = avgDirX * sinH + avgDirY * cosH;
+      const worldPerpX = perpX * cosH - perpY * sinH;
+      const worldPerpZ = perpX * sinH + perpY * cosH;
+
+      const worldX = pose.x + worldDirX * distance + worldPerpX * lateralJitter;
+      const worldZ = pose.y + worldDirZ * distance + worldPerpZ * lateralJitter;
+
+      const mesh = new Mesh(this.trackGeoDetected, this.trackMatOccluded);
+      mesh.position.set(worldX, TRACK_MARKER_RADIUS, worldZ);
+      mesh.visible = false; // will be shown by updateTrackVisibility
+      this.scene.add(mesh);
+
+      this.trackMeshes.set(trackId, { mesh, worldX, worldZ });
+      placed++;
+    }
+
+    console.log(LOG_PREFIX, `Placed ${placed} track objects in scene`);
+  }
+
   private getTrajectoryExtent(poses: EgoPose[]): { centerX: number; centerY: number; rangeX: number; rangeY: number } {
     let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     for (const p of poses) {
@@ -591,6 +690,17 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
     this.detectedCount = result.detectedCount;
     this.totalPresent = result.total;
     this.perCameraCounts = [...result.perCamera];
+
+    // Update 3D track object visibility and color
+    const present = this.trackVisibility.getTracksPresent(this.currentFrame);
+    for (const [trackId, entry] of this.trackMeshes) {
+      const isPresent = present.has(trackId);
+      const isDetected = result.detected.has(trackId);
+      entry.mesh.visible = isPresent;
+      if (isPresent) {
+        entry.mesh.material = isDetected ? this.trackMatDetected! : this.trackMatOccluded!;
+      }
+    }
   }
 
   private renderLoop = (): void => {
