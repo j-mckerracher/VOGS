@@ -1,6 +1,7 @@
 import {
   Component,
-  viewChild
+  viewChild,
+  ChangeDetectorRef
 } from "@angular/core";
 import type { ElementRef, OnDestroy, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
@@ -286,7 +287,9 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
     // eslint-disable-next-line no-unused-vars -- Angular DI constructor parameter property
     private readonly diagnostics: DiagnosticsService,
     // eslint-disable-next-line no-unused-vars -- Angular DI constructor parameter property
-    private readonly trackVisibility: TrackVisibilityService
+    private readonly trackVisibility: TrackVisibilityService,
+    // eslint-disable-next-line no-unused-vars -- Angular DI constructor parameter property
+    private readonly cdr: ChangeDetectorRef
   ) {}
 
   get fusionModeLabel(): string {
@@ -365,18 +368,20 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
 
       console.log(LOG_PREFIX, `Scene data loaded: ${sceneData.totalFrames} frames, ${sceneData.egoPoses.length} poses, ${sceneData.cameraCalibrations.length} cams`);
 
-      this.loadingMessage = "Initializing 3D renderer...";
-      this.initThreeJs(sceneData);
+      // Show the canvas first, then init Three.js (canvas is behind *ngIf="!isLoading")
+      this.fusionStore.setLoadState({ status: "ready", error: null });
+      this.isLoading = false;
+      this.cdr.detectChanges();
 
-      this.loadingMessage = "Loading first frame...";
+      // Wait one microtask so Angular can create the canvas element
+      await new Promise<void>((resolve) => { setTimeout(resolve, 0); });
+
+      this.initThreeJs(sceneData);
       this.setFrame(0);
 
       const durationMs = Math.round(performance.now() - startMs);
       this.diagnostics.logAssetLoadSuccess(environment.sceneId, durationMs);
       console.log(LOG_PREFIX, `Scene ready in ${durationMs}ms`);
-
-      this.fusionStore.setLoadState({ status: "ready", error: null });
-      this.isLoading = false;
     } catch (error) {
       const msg = error instanceof Error ? error.message : "Unknown error loading scene";
       console.error(LOG_PREFIX, "Scene load failed:", msg);

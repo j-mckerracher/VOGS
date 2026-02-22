@@ -24,7 +24,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "vogs-demo:build"
+            "buildTarget": "vogs-demo:build",
+            "proxyConfig": "proxy.conf.json"
           }
         }
       }

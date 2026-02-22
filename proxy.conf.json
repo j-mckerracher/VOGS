@@ -1,0 +1,8 @@
+{
+  "/cdn-proxy": {
+    "target": "https://d3msd1uq322nhw.cloudfront.net",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": { "^/cdn-proxy": "" }
+  }
+}
