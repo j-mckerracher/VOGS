@@ -313,7 +313,7 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
   private trackRingGeo: RingGeometry | null = null;
   private trackRingMat: MeshBasicMaterial | null = null;
   /** Follow-camera offset (behind + above the ego vehicle) */
-  private readonly followOffset = new Vector3(0, 15, -20);
+  private readonly followOffset = new Vector3(0, 45, -60);
 
   constructor(
     // eslint-disable-next-line no-unused-vars -- Angular DI constructor parameter property
