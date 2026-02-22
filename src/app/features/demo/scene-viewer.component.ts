@@ -28,6 +28,8 @@ import {
   ConeGeometry,
   Group,
   SphereGeometry,
+  RingGeometry,
+  Vector3,
   type Texture
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
@@ -80,6 +82,7 @@ const COLORS = {
             <span class="detection-badge" [class.vogs]="currentFusionMode === 'vogs'">
               🎯 {{ detectedCount }} / {{ totalPresent }} objects
             </span>
+            <span class="delta-badge" *ngIf="detectionDelta">{{ detectionDelta }}</span>
             <span class="mode-badge">{{ fusionModeLabel }}</span>
           </div>
         </div>
@@ -110,6 +113,9 @@ const COLORS = {
           <span class="frame-label">Frame {{ currentFrame }} / {{ totalFrames - 1 }}</span>
           <button type="button" (click)="togglePlayback()" class="play-btn">
             {{ isPlaying ? '⏸' : '▶' }}
+          </button>
+          <button type="button" (click)="toggleFollowCamera()" class="follow-btn" [class.active]="followCamera">
+            🎥 {{ followCamera ? 'Follow' : 'Free' }}
           </button>
         </div>
       </div>
@@ -189,6 +195,14 @@ const COLORS = {
       padding: 0.25rem 0.5rem;
     }
     .detection-badge.vogs { color: #00ff88; }
+    .delta-badge {
+      background: rgba(0,100,50,0.85);
+      border-radius: 0.25rem;
+      color: #00ff88;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.5rem;
+    }
     .mode-badge { color: var(--purdue-gold); }
     .camera-strip {
       display: flex;
@@ -251,6 +265,14 @@ const COLORS = {
     .frame-controls input[type="range"] { accent-color: var(--purdue-gold); flex: 1; }
     .frame-label { color: #aaa; font-size: 0.75rem; white-space: nowrap; }
     .play-btn { font-size: 1.1rem !important; }
+    .follow-btn {
+      font-size: 0.75rem !important;
+      opacity: 0.6;
+    }
+    .follow-btn.active {
+      border-color: var(--purdue-gold) !important;
+      opacity: 1;
+    }
   `]
 })
 export class SceneViewerComponent implements OnInit, OnDestroy {
@@ -268,6 +290,8 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
   totalPresent = 0;
   currentFusionMode = "single_agent";
   perCameraCounts: number[] = [];
+  followCamera = true;
+  singleAgentCount = 0; // for HUD delta
 
   private renderer: WebGLRenderer | null = null;
   private scene: Scene | null = null;
@@ -280,12 +304,16 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
   private egoMesh: Mesh | null = null;
   private egoGroup: Group | null = null;
   private sceneDataCache: SceneData | null = null;
-  /** trackId → { mesh, worldX, worldZ } for each tracked object in the scene */
-  private trackMeshes = new Map<number, { mesh: Mesh; worldX: number; worldZ: number }>();
+  /** trackId → { mesh, ring, worldX, worldZ } for each tracked object in the scene */
+  private trackMeshes = new Map<number, { mesh: Mesh; ring: Mesh; worldX: number; worldZ: number }>();
   /** Shared geometry/materials for track markers */
   private trackGeoDetected: SphereGeometry | null = null;
   private trackMatDetected: MeshLambertMaterial | null = null;
   private trackMatOccluded: MeshLambertMaterial | null = null;
+  private trackRingGeo: RingGeometry | null = null;
+  private trackRingMat: MeshBasicMaterial | null = null;
+  /** Follow-camera offset (behind + above the ego vehicle) */
+  private readonly followOffset = new Vector3(0, 15, -20);
 
   constructor(
     // eslint-disable-next-line no-unused-vars -- Angular DI constructor parameter property
@@ -308,6 +336,21 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
       ground_truth: "Ground Truth"
     };
     return labels[this.currentFusionMode] ?? this.currentFusionMode;
+  }
+
+  get detectionDelta(): string {
+    if (this.currentFusionMode === "single_agent") return "";
+    const delta = this.detectedCount - this.singleAgentCount;
+    if (delta <= 0) return "";
+    return `+${delta} via ${this.fusionModeLabel}`;
+  }
+
+  toggleFollowCamera(): void {
+    this.followCamera = !this.followCamera;
+    if (!this.followCamera && this.controls) {
+      // Restore free orbit — keep current position but unlock target
+      this.controls.enableDamping = true;
+    }
   }
 
   ngOnInit(): void {
@@ -560,7 +603,14 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
     this.trackMatOccluded = new MeshLambertMaterial({
       color: COLORS.occluded,
       transparent: true,
-      opacity: 0.45
+      opacity: 0.35
+    });
+    this.trackRingGeo = new RingGeometry(TRACK_MARKER_RADIUS * 1.2, TRACK_MARKER_RADIUS * 2.2, 24);
+    this.trackRingMat = new MeshBasicMaterial({
+      color: COLORS.detected,
+      transparent: true,
+      opacity: 0.5,
+      side: DoubleSide
     });
 
     const cals = sceneData.cameraCalibrations;
@@ -619,10 +669,17 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
 
       const mesh = new Mesh(this.trackGeoDetected, this.trackMatOccluded);
       mesh.position.set(worldX, TRACK_MARKER_RADIUS, worldZ);
-      mesh.visible = false; // will be shown by updateTrackVisibility
+      mesh.visible = false;
       this.scene.add(mesh);
 
-      this.trackMeshes.set(trackId, { mesh, worldX, worldZ });
+      // Detection ring on the ground plane
+      const ring = new Mesh(this.trackRingGeo!, this.trackRingMat!);
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.set(worldX, 0.05, worldZ);
+      ring.visible = false;
+      this.scene.add(ring);
+
+      this.trackMeshes.set(trackId, { mesh, ring, worldX, worldZ });
       placed++;
     }
 
@@ -655,6 +712,25 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
       if (pose) {
         this.egoGroup.position.set(pose.x, 0, pose.y);
         this.egoGroup.rotation.y = -pose.heading;
+
+        // Follow-camera: position camera behind the vehicle along its heading
+        if (this.followCamera && this.camera && this.controls) {
+          const cosH = Math.cos(pose.heading);
+          const sinH = Math.sin(pose.heading);
+          // "behind" in vehicle frame = negative forward direction
+          const camX = pose.x - cosH * this.followOffset.z + sinH * this.followOffset.x;
+          const camZ = pose.y - sinH * this.followOffset.z - cosH * this.followOffset.x;
+          this.camera.position.set(camX, this.followOffset.y, camZ);
+          this.controls.target.set(pose.x, 0, pose.y);
+          this.controls.update();
+        }
+
+        // Move front camera billboard relative to vehicle
+        if (this.frontCameraPlane) {
+          const fwdX = Math.cos(pose.heading) * 30;
+          const fwdZ = Math.sin(pose.heading) * 30;
+          this.frontCameraPlane.position.set(pose.x + fwdX, 25, pose.y + fwdZ);
+        }
       }
     }
 
@@ -691,14 +767,25 @@ export class SceneViewerComponent implements OnInit, OnDestroy {
     this.totalPresent = result.total;
     this.perCameraCounts = [...result.perCamera];
 
-    // Update 3D track object visibility and color
+    // Compute single-agent baseline for HUD delta
+    if (this.currentFusionMode === "single_agent") {
+      this.singleAgentCount = result.detectedCount;
+    } else {
+      const saResult = this.trackVisibility.getVisibility(this.currentFrame, "single_agent", environment.cameraCount);
+      this.singleAgentCount = saResult.detectedCount;
+    }
+
+    // Update 3D track object visibility, color, scale, and detection ring
     const present = this.trackVisibility.getTracksPresent(this.currentFrame);
     for (const [trackId, entry] of this.trackMeshes) {
       const isPresent = present.has(trackId);
       const isDetected = result.detected.has(trackId);
       entry.mesh.visible = isPresent;
+      entry.ring.visible = isPresent && isDetected;
       if (isPresent) {
         entry.mesh.material = isDetected ? this.trackMatDetected! : this.trackMatOccluded!;
+        const scale = isDetected ? 1.0 : 0.5;
+        entry.mesh.scale.setScalar(scale);
       }
     }
   }
