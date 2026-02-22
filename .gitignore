@@ -7,6 +7,9 @@
 /.angular/
 .angular/
 
+# Local scene data (junction to Downloads folder, not committed)
+src/assets/002
+
 # Node modules and dependency files
 /node_modules/
 /package-lock.json
